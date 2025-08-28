@@ -9,7 +9,7 @@
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css" />
     <link rel="stylesheet" href="{{ asset('css/ivetc.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
                         <a class="nav-link active" href="#hero-section">Home</a>
                     </li>
                     <li class="nav-item menu-item">
-                        <a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
+                        <a class="nav-link" href="documents" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
                     </li>
                     <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('webpage.details') }}">Details</a>
@@ -556,7 +556,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     {{-- Member --}}
                     <div class="member-card">
                         <div class="member-container position-relative">
@@ -881,21 +881,21 @@
 
                     <div class="d-flex justify-content-center">
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_abstracts_ivetc_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_abstracts_ivetc_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Book of Abstracts VETC 2025</p>
                         </div>
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_biographies_organizing_committee_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_biographies_organizing_committee_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Book of Biographies Organizing Committee 2025</p>
                         </div>
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/congress_programivetc_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/congress_programivetc_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Congress Program VETC 2025</p>
                         </div>
                     </div>
@@ -909,17 +909,27 @@
     </div>
 
     {{--scripts--}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- jQuery (si usas Slick o jQuery) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Slick Carousel -->
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Bootstrap JS (incluye Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tus scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/pre-loader.js') }}"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="{{ asset('js/slick.js') }}"></script>
+    <!-- Inicialización de ScrollSpy -->
     <script>
         let scrollSpy = new bootstrap.ScrollSpy(document.body, {
             target: '#ivetc-menu'
         });
     </script>
+
 </body>
 
 </html>

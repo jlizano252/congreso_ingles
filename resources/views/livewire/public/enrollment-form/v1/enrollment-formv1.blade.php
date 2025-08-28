@@ -185,20 +185,6 @@
                     </div>
                 </div>
 
-                <!-- {{-- item --}}
-                <div class="row mb-3">
-                    <div class="col-12 col-md-8 col-lg-7">
-                        <div class="">
-                            <div class="d-flex align-items-start">
-                                <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-email-inst">Correo institucional</label>
-                            </div>
-                            <input wire:model.lazy="email_inst" class="form-control form-control-sm" id="user-email-inst" type="email" placeholder="Ingresa tu correo institucional" />
-                            @error('email_inst') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
-                        </div>
-                    </div>
-                </div> -->
-
                 {{-- item --}}
                 <div class="row mb-3">
                     <div class="col-12 col-md-8 col-lg-6">

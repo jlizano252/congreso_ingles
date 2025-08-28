@@ -8,8 +8,8 @@
 <script src="{{ asset( 'vendors/fontawesome/all.min.js' ) }}"></script>
 <script src="{{ asset( 'vendors/lodash/lodash.min.js' ) }}"></script>
 <script src="{{ asset('vendors/countup/countUp.umd.js') }}"></script>
-<script src="{{ asset( 'js/theme.js' ) }}/"></script>
-{{--<script src="{{ asset( 'js/global/preloader.js' ) }}/"></script>--}}
+<!-- <script src="{{ asset( 'js/theme.js' ) }}/"></script> -->
+<!-- <script src="{{ asset( 'js/global/preloader.js' ) }}/"></script> -->
 
 {{-- Javascript added by page --}}
 @yield('scripts')

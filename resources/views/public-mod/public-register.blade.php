@@ -4,7 +4,7 @@
 
 <style>
     body {
-        background-image: url("https://cms.centroatenea.app/images/pattern-min.png");
+        /* background-image: url("https://cms.centroatenea.app/images/pattern-min.png"); */
         background-repeat: repeat;
         background-position: center center;
         background-size: auto;

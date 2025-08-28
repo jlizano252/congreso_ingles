@@ -7,7 +7,7 @@
     <script src="{{ asset( 'vendors/anchorjs/anchor.min.js' ) }}"></script>
     <script src="{{ asset( 'vendors/fontawesome/all.min.js' ) }}"></script>
     <script src="{{ asset( 'vendors/lodash/lodash.min.js' ) }}"></script>
-    <script src="{{ asset( 'js/theme.js' ) }}/"></script>
+    <!-- <script src="{{ asset( 'js/theme.js' ) }}/"></script> -->
     <script src="{{ asset( 'js/global/preloader.js' ) }}/"></script>
     <script src="{{ asset( 'js/global/messages-listeners.js' ) }}/"></script>
     <script src="{{ asset( 'js/global/searchBox.js' ) }}/"></script>
