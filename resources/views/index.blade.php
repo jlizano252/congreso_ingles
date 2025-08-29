@@ -445,7 +445,7 @@
                             <div class="squ3 rounded"></div>
                             <div class="squ4 rounded"></div>
                             <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/maria_vega_zamora.png') }}" alt="committee-memb">
+                                <img class="img-fluid" src="{{ asset('images/committee/maria_vega_zamora.PNG') }}" alt="committee-memb">
                             </div>
                         </div>
                         <div class="member-user">
@@ -485,7 +485,7 @@
                             <div class="squ3 rounded"></div>
                             <div class="squ4 rounded"></div>
                             <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/rommy_acuña_ramirez.jpg') }}" alt="committee-memb">
+                                <img class="img-fluid" src="{{ asset('images/committee/rommy_acuña_ramirez.JPG') }}" alt="committee-memb">
                             </div>
                         </div>
                         <div class="member-user">

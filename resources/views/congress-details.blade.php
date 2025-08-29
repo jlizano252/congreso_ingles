@@ -43,7 +43,7 @@
                         <a class="nav-link" href="{{ route('webpage.index') }}">Home</a>
                     </li>
                     <li class="nav-item menu-item">
-                        <a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
+                        <a class="nav-link" href="documents" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
                     </li>
                     <li class="nav-item menu-item">
                         <a class="nav-link active" href="#hero-section">Details</a>
@@ -51,7 +51,7 @@
                     <li class="nav-item menu-item mt-4 mt-lg-0">
                         <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Register</a>
                     </li>
-                     <li class="nav-item menu-item mt-4 mt-lg-0">
+                    <li class="nav-item menu-item mt-4 mt-lg-0">
                         <a href="{{ route('public.postularse.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Applicant</a>
                     </li>
                 </ul>
@@ -336,21 +336,21 @@
 
                     <div class="d-flex justify-content-center">
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_abstracts_ivetc_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_abstracts_ivetc_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Book of Abstracts VETC 2025</p>
                         </div>
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_biographies_organizing_committee_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/book_of_biographies_organizing_committee_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Book of Biographies Organizing Committee 2025</p>
                         </div>
                         <div class="download-icon-01 text-center mx-4" style="width: 100%; max-width: 100px;">
-                            <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/congress_programivetc_2022.pdf">
+                            <!-- <a class="animate" target="_blank" href="https://cms.centroatenea.app/downloads/congress_programivetc_2022.pdf">
                                 <img class="img-fluid" style="max-width: 60px;" src="https://cms.centroatenea.app/images/icons/download-pdf-01.png" alt="">
-                            </a>
+                            </a> -->
                             <p class="small">Congress Program VETC 2025</p>
                         </div>
                     </div>
@@ -364,16 +364,28 @@
     </div>
 
 
-    {{--scripts--}}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {{-- scripts --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+    {{-- Bootstrap JS (incluye Popper) --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/pre-loader.js') }}"></script>
     <script src="{{ asset('js/menu.js') }}"></script>
+
     <script>
-        let scrollSpy = new bootstrap.ScrollSpy(document.body, {
-            target: '#ivetc-menu'
+        document.addEventListener("DOMContentLoaded", function() {
+            let scrollSpy = new bootstrap.ScrollSpy(document.body, {
+                target: '#ivetc-menu'
+            });
         });
     </script>
+
 </body>
 
 </html>
