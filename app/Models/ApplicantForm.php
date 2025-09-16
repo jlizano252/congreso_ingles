@@ -32,4 +32,9 @@ class ApplicantForm extends Model
     {
         return $this->belongsTo(Applicant::class);
     }
+
+    public function participants()
+    {
+        return $this->belongsToMany(Participant::class, 'applicant_participant');
+    }
 }

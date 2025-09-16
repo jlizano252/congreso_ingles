@@ -22,12 +22,18 @@ class Participant extends Model
     ];
 
     // Relationships...
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     public function register()
     {
         return $this->hasOne(RegistrationForm::class, 'participant_id', 'id');
+    }
+
+    public function applicants()
+    {
+        return $this->belongsToMany(Applicant::class, 'applicant_participant');
     }
 }

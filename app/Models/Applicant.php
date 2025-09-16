@@ -28,7 +28,7 @@ class Applicant extends Model
         'selected_audiences' => 'array',
         'teacher_wellbeing' => 'array',
     ];
-    
+
     // Relación con usuario
     public function user()
     {
@@ -47,7 +47,12 @@ class Applicant extends Model
     }
 
     public function forms()
-{
-    return $this->hasMany(ApplicantForm::class, 'applicant_id');
-}
+    {
+        return $this->hasMany(ApplicantForm::class, 'applicant_id');
+    }
+
+    public function participants()
+    {
+        return $this->belongsToMany(Participant::class, 'applicant_participant');
+    }
 }

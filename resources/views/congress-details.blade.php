@@ -206,7 +206,7 @@
             </div>
         </section>
 
-        <section class="information">
+        <!-- <section class="information">
             <div class="container">
                 <h1 class="title text-center fw-bolder">MORE INFORMATION?</h1>
                 {{-- <h5 class="fw-bolder text-center">Subscribe and join our group!</h5>--}}
@@ -225,7 +225,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section class="footer py-3">
             <div class="d-flex justify-content-center">
@@ -252,7 +252,7 @@
     </div>
 
     {{-- Register --}}
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded">
                 <div class="modal-header modal-header-blue text-white">
@@ -290,7 +290,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- <div class="modal-header modal-header-blue text-white">
+                 <div class="modal-header modal-header-blue text-white">
                 <h5 class="modal-title" id="loadingModalLabel">Coming soon!</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -310,10 +310,10 @@
                 <div class="d-flex justify-content-end mt-3 mb-3">
                     <button class="btn info_btn info_btn fw-normal px-5 mt-4" data-bs-dismiss="modal">Close</button>
                 </div>
-            </div> -->
+            </div> 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="modal fade" id="loadingModal" tabindex="-1" aria-labelledby="#loadingModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

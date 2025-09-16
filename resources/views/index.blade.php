@@ -601,26 +601,19 @@
             </div>
         </section>
 
-        <section class="information">
+        <!-- <section class="information">
             <div class="container">
-                <h1 class="title text-center fw-bolder">MORE INFORMATION?</h1>
-                {{-- <h5 class="fw-bolder text-center">Subscribe and join our group!</h5>--}}
+                <h1 class="title text-center fw-bolder">Wanna enjoy the congress?</h1>
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8">
-                        {{-- <p class="text-center">We will sending important information through our newsletter to keep you updated on all events and news that we will be planning this new year for you.</p>--}}
-                        <p class="text-center">Feel free to contact us at our official email:
-                            <i class="fw-bold">englishteachingcongress4@gmail.com</i>
-                        </p>
-                    </div>
                     <div class="col-12 col-md-7">
                         <div class="d-flex justify-content-center">
                             {{-- <a class="btn info_btn fw-normal px-5 mt-4 me-3" href="">Subscribe</a>--}}
-                            <button class="btn reg_btn fw-normal px-5 mt-3" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                             <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Register</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <section class="footer py-3">
             <div class="d-flex justify-content-center">
