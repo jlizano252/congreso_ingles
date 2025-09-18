@@ -1,7 +1,8 @@
-<!-- resources/views/layout/participant-layout.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    @livewireStyles
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'V-ETC')</title>
@@ -13,6 +14,7 @@
         }
     </style>
 </head>
+
 <body>
     <main class="main" id="top">
         <div class="container" data-layout="container">
@@ -36,7 +38,7 @@
             <footer class="footer mt-4">
                 <div class="row g-0 justify-content-between fs--1">
                     <div class="col-12 col-sm-auto text-center">
-                        <p class="mb-0 text-500">Sponsored with ❤ by Centro Atenea<span class="d-none d-sm-inline-block">|</span><br class="d-sm-none" /> 2022</p>
+                        <p class="mb-0 text-500">Sponsored with ❤ by Jenhson Lizano<span class="d-none d-sm-inline-block">|</span><br class="d-sm-none" /> 2025</p>
                     </div>
                     <div class="col-12 col-sm-auto text-center">
                         <p class="mb-0 text-600">v1.0.0</p>
@@ -48,5 +50,7 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
+    @livewireScripts
 </body>
+
 </html>

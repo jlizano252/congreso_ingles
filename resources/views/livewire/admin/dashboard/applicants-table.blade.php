@@ -3,7 +3,6 @@
     <div class="card" style="font-size: .9em">
         <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
-                @livewire('admin.services.moodle.create-user-from-list')
                 <div class="d-flex justify-content-end align-items-center">
                     <div class="mx-2">
                         <input wire:model="search" class="form-control form-control-sm" type="text" placeholder="Search applicant..." />
