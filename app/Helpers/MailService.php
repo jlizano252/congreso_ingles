@@ -12,18 +12,18 @@ class MailService
     public static function sendRegisterMailNotification( array $params ): void
     {
         $email = New RegisterMailNotification( $params );
-        Mail::to([$params['email']])->bcc(['ivetc@aulavirtual.co.cr'])->send($email);
+        Mail::to([$params['email']])->bcc(['jenhson13@gmail.com'])->send($email);
     }
 
     public static function sendExportMailNotification( array $params ): void
     {
         $email = New MoodleUserDataEmail( $params );
-        Mail::to([$params['email']])->bcc(['ivetc@aulavirtual.co.cr'])->send($email);
+        Mail::to([$params['email']])->bcc(['jenhson13@gmail.com'])->send($email);
     }
 
     public static function sendErrorEmail( $error ): void
     {
         $email = New ErrorEmail( $error );
-        Mail::to('andres.rojas.alfaro@gmail.com')->send($email);
+        Mail::to('jenhson13@gmail.com')->send($email);
     }
 }

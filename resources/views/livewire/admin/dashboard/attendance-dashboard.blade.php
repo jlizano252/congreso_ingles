@@ -45,7 +45,7 @@
                             </button>
                         </td>
                         <td>
-                            {{ $attendance?->checked_in_at?->format('d/m/Y H:i') ?? '-' }}
+                            {{ $attendance?->checked_in_at?->format('d/m/Y') ?? '-' }}
                         </td>
                     </tr>
                     @empty
