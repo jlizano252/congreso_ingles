@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mt-4">
 
-    <h1 class="mb-4">Información del Participante</h1>
+    <h1 class="mb-4">Participant Information</h1>
 
     {{-- Mensaje de éxito --}}
     @if(session('message'))
@@ -27,9 +27,9 @@
     @endif
 
     @if($participant && $participant->user)
-    <p><strong>Participante:</strong> {{ $participant->user->name }} {{ $participant->user->lastname }}</p>
+    <p><strong>Participant:</strong> {{ $participant->user->name }} {{ $participant->user->lastname }}</p>
 
-    <h3 class="mt-4">Seleccione los temas de su interés:</h3>
+    <h3 class="mt-4">Select a topic:</h3>
 
     @if($applicants && $applicants->count() > 0)
     <form action="{{ route('participant.register') }}" method="POST" id="participantForm">

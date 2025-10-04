@@ -25,28 +25,27 @@
         <form wire:submit.prevent="processData" autocomplete="off">
             <div class="card-body px-lg-4 fs--1" style="line-height: 1.8">
                 <div class="mb-3">
-                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">V Congreso de la Enseñanza del Inglés
-                        <br> de la Región Huetar Norte 2025
+                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">5th Congress on the Teaching of English
+                        <br> of the Northern Huetar Region 2025
                     </h4>
                 </div>
 
-                <h5 class="text-center text-etc-blue fw-semi-bold text-uppercase mt-4 mb-3">Formulario de inscripción</h5>
+                <h5 class="text-center text-etc-blue fw-semi-bold text-uppercase mt-4 mb-3">Registration Form</h5>
 
                 {{-- Instructions --}}
                 @if( $current_step == 1 )
 
-                <p class="text-secondary">La información que usted brinde se mantendrá en completa confidencialidad.
-                    <br> <strong>Favor prestar atención en la redacción</strong> <i>(mayúsculas y tildes)</i> y la validez de la información que
-                    usted brindará.
+                <p class="text-secondary">The information you provide will be kept completely confidential.
+                    <br> <strong>Please pay attention to spelling and capitalization</strong>
+                    <i>(uppercase letters and accents)</i> and ensure the accuracy of the information you provide.
                 </p>
 
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Sección 1.</span> Instrucciones generales</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Section 1.</span> General Instructions</h6>
 
                 <div class="text-secondary">
-                    <p>Estimada persona participante,</p>
-                    <p>El V Congreso de la Enseñanza del Inglés de la Región Huetar Norte 2025 será presencial,
-                        se llevará a cabo los dias jueves 27 de noviembre y viernes 28 de noviembre del año en curso de 8:00 a.m. a 4:00 p.
-                        m.</p>
+                    <p>Dear Participant,</p>
+                    <p>The 5th English Teaching Congress of the Northern Huetar Region 2025 will be held in person on Thursday, November 27th, and Friday,
+                        November 28th, from 8:00 a.m. to 4:00 p.m.</p>
                     <!-- <p>Se otorgará un certificado de participación a aquellas personas que así lo soliciten y paguen el
                         monto de 5 000 colones, debido a que solo se reconoce para carrera profesional cuando el
                         monto es sufragado por la persona interesada <i>(según resolución DG-139-2019, Artículo 8,
@@ -61,12 +60,12 @@
                 <div class="question px-2">
                     <div class="d-flex align-items-start">
                         <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                        <p class="mb-0">¿Se compromete a atender de manera presencial a las diferentes actividades establecidas para este congreso?</p>
+                        <p class="mb-0">Do you commit to attending the different activities scheduled for this congress in person?</p>
                     </div>
                     <div class="ms-4 mt-3 d-flex">
                         <div class="form-check me-5">
                             <input wire:model="quest1_1" wire:change="changeStopStatus" class="form-check-input" id="quest1-1-s" type="radio" name="quest1_1-s" value="si" />
-                            <label class="form-check-label" for="quest1-1-s">Si</label>
+                            <label class="form-check-label" for="quest1-1-s">Yes</label>
                         </div>
                         <div class="form-check">
                             <input wire:model="quest1_1" wire:change="changeStopStatus" class="form-check-input" id="quest1_1-n" type="radio" name="quest1_1-n" value="no" />
@@ -74,14 +73,14 @@
                         </div>
                     </div>
                     @if($stop)
-                    <div class="alert alert-danger py-2 px-3" role="alert">¡Es necesario aceptar esta condición para continuar!</div>
+                    <div class="alert alert-danger py-2 px-3" role="alert">You must accept this condition to continue!</div>
                     @endif
                 </div>
                 @endif
 
                 {{-- Step #2 --}}
                 @if( $current_step == 2 )
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Sección 2.</span> Datos personales</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Section 2.</span> Personal Data</h6>
                 @livewire('public.enrollment-form.v1.ide-data')
 
                 {{-- item --}}
@@ -91,37 +90,37 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-ide">Número de cédula</label>
+                                <label class="mt-1 mb-0" for="user-ide">IDE Number</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Ingresa tu número de cédula" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your ID number" />
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
-                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>El número de cédula debe incluir los 9 dígitos.</i></span>
+                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>The ID number must include all 9 digits..</i></span>
                     @elseif($selected_ide_type == 2)
                     <div class="col-12 col-md-8 col-lg-6">
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-ide">Número de pasaporte</label>
+                                <label class="mt-1 mb-0" for="user-ide">Passport Number</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Ingresa tu número de pasaporte" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Passport number" />
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
-                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>El número de pasaporte debe incluir todos los dígitos.</i></span>
+                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>The passport number must include all digits.</i></span>
                     @elseif($selected_ide_type == 3)
                     <div class="col-12 col-md-8 col-lg-6">
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-ide">Cédula de residencia</label>
+                                <label class="mt-1 mb-0" for="user-ide">Residence ID</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Ingresa tu número de residencia" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Residence number" />
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
-                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>El número de residencia debe incluir todos los dígitos.</i></span>
+                    <span class="small text-muted"><i><span class="text-danger me-1">*</span>The residence number must include all digits.</i></span>
                     @endif
                 </div>
 
@@ -131,9 +130,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-name">Nombre</label>
+                                <label class="mt-1 mb-0" for="user-name">Name</label>
                             </div>
-                            <input wire:model.lazy="name" class="form-control form-control-sm" id="user-name" type="text" placeholder="Ingresa tu nombre" />
+                            <input wire:model.lazy="name" class="form-control form-control-sm" id="user-name" type="text" placeholder="Enter your name" />
                             @error('name') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -145,9 +144,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-lastname">Apellidos</label>
+                                <label class="mt-1 mb-0" for="user-lastname">Lastnames</label>
                             </div>
-                            <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Ingrese sus apellidos" />
+                            <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Enter your lastnames" />
                             @error('lastname') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -162,11 +161,11 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-mobile">Teléfono celular</label>
+                                <label class="mt-1 mb-0" for="user-mobile">Phone number</label>
                             </div>
-                            <input wire:model.lazy="mobile" class="form-control form-control-sm" id="user-mobile" type="text" placeholder="Ingresa tu teléfono" />
+                            <input wire:model.lazy="mobile" class="form-control form-control-sm" id="user-mobile" type="text" placeholder="Enter your phone number" />
                             @error('mobile') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
-                            <span class="small text-muted"><i><span class="text-danger me-1">*</span>Formato: ####-####</i></span>
+                            <span class="small text-muted"><i><span class="text-danger me-1">*</span>Format: +### ####-####</i></span>
                         </div>
                     </div>
                 </div>
@@ -177,9 +176,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-email-pers">Correo personal <span class="text-secondary ms-1">(Activo)</span></label>
+                                <label class="mt-1 mb-0" for="user-email-pers">Personal Email <span class="text-secondary ms-1">(Activo)</span></label>
                             </div>
-                            <input wire:model.lazy="email" class="form-control form-control-sm" id="user-email-pers" type="email" placeholder="Ingresa tu correo personal" />
+                            <input wire:model.lazy="email" class="form-control form-control-sm" id="user-email-pers" type="email" placeholder="Enter your personal email" />
                             @error('email') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -191,142 +190,142 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-ide">País de residencia</label>
+                                <label class="mt-1 mb-0" for="user-ide">Residence Country</label>
                             </div>
                             <select wire:model="country" class="form-select form-select-sm" aria-label="Default select example">
-                                <option value="AF">Afganist&#225;n</option>
+                                <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
-                                <option value="DE">Alemania</option>
+                                <option value="DE">Germany</option>
                                 <option value="AD">Andorra</option>
                                 <option value="AO">Angola</option>
-                                <option value="AI">Anguila</option>
-                                <option value="AQ">Ant&#225;rtida</option>
-                                <option value="AG">Antigua y Barbuda</option>
-                                <option value="AN">Antillas Neerlandesas</option>
-                                <option value="SA">Arabia Saud&#237;</option>
-                                <option value="DZ">Argelia</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antarctica</option>
+                                <option value="AG">Antigua and Barbuda</option>
+                                <option value="AN">Netherlands Antilles</option>
+                                <option value="SA">Saudi Arabia</option>
+                                <option value="DZ">Algeria</option>
                                 <option value="AR">Argentina</option>
                                 <option value="AM">Armenia</option>
                                 <option value="AW">Aruba</option>
                                 <option value="AU">Australia</option>
                                 <option value="AT">Austria</option>
                                 <option value="BS">Bahamas</option>
-                                <option value="BH">Bahr&#233;in</option>
+                                <option value="BH">Bahrain</option>
                                 <option value="BD">Bangladesh</option>
                                 <option value="BB">Barbados</option>
-                                <option value="BE">B&#233;lgica</option>
-                                <option value="BZ">Belice</option>
-                                <option value="BJ">Ben&#237;n</option>
-                                <option value="BM">Bermudas</option>
-                                <option value="BY">Bielorrusia</option>
+                                <option value="BE">Belgium</option>
+                                <option value="BZ">Belize</option>
+                                <option value="BJ">Benin</option>
+                                <option value="BM">Bermuda</option>
+                                <option value="BY">Belarus</option>
                                 <option value="BO">Bolivia</option>
-                                <option value="BA">Bosnia y Herzegovina</option>
-                                <option value="BW">Botsuana</option>
-                                <option value="BR">Brasil</option>
-                                <option value="BN">Brun&#233;i Darussalam</option>
+                                <option value="BA">Bosnia and Herzegovina</option>
+                                <option value="BW">Botswana</option>
+                                <option value="BR">Brazil</option>
+                                <option value="BN">Brunei Darussalam</option>
                                 <option value="BG">Bulgaria</option>
                                 <option value="BF">Burkina Faso</option>
                                 <option value="BI">Burundi</option>
-                                <option value="BT">But&#225;n</option>
-                                <option value="CV">Cabo Verde</option>
-                                <option value="KH">Camboya</option>
-                                <option value="CM">Camer&#250;n</option>
-                                <option value="CA">Canad&#225;</option>
-                                <option value="BQ">Caribe Neerland&#233;s</option>
+                                <option value="BT">Bhutan</option>
+                                <option value="CV">Cape Verde</option>
+                                <option value="KH">Cambodia</option>
+                                <option value="CM">Cameroon</option>
+                                <option value="CA">Canada</option>
+                                <option value="BQ">Caribbean Netherlands</option>
                                 <option value="TD">Chad</option>
                                 <option value="CL">Chile</option>
                                 <option value="CN">China</option>
-                                <option value="CY">Chipre</option>
+                                <option value="CY">Cyprus</option>
                                 <option value="CO">Colombia</option>
-                                <option value="KM">Comoras</option>
+                                <option value="KM">Comoros</option>
                                 <option value="CG">Congo</option>
-                                <option value="CI">Costa de Marfil</option>
+                                <option value="CI">Ivory Coast</option>
                                 <option value="CR">Costa Rica</option>
-                                <option value="HR">Croacia</option>
+                                <option value="HR">Croatia</option>
                                 <option value="CU">Cuba</option>
-                                <option value="CW">Curazao</option>
-                                <option value="DK">Dinamarca</option>
+                                <option value="CW">Curacao</option>
+                                <option value="DK">Denmark</option>
                                 <option value="DJ">Djibouti</option>
                                 <option value="DM">Dominica</option>
                                 <option value="EC">Ecuador</option>
-                                <option value="US">EE.UU.</option>
-                                <option value="EG">Egipto</option>
+                                <option value="US">USA</option>
+                                <option value="EG">Egypt</option>
                                 <option value="SV">El Salvador</option>
                                 <option value="ER">Eritrea</option>
-                                <option value="SK">Eslovaquia</option>
-                                <option value="SI">Eslovenia</option>
-                                <option value="ES">Espa&#241;a</option>
-                                <option value="PH">Filipinas</option>
-                                <option value="FI">Finlandia</option>
-                                <option value="FR">Francia</option>
+                                <option value="SK">Slovakia</option>
+                                <option value="SI">Slovenia</option>
+                                <option value="ES">Spain</option>
+                                <option value="PH">Philippines</option>
+                                <option value="FI">Finland</option>
+                                <option value="FR">France</option>
                                 <option value="GM">Gambia</option>
                                 <option value="GE">Georgia</option>
                                 <option value="GH">Ghana</option>
                                 <option value="GI">Gibraltar</option>
-                                <option value="GD">Granada</option>
-                                <option value="GR">Grecia</option>
-                                <option value="GL">Groenlandia</option>
-                                <option value="GP">Guadalupe</option>
+                                <option value="GD">Grenada</option>
+                                <option value="GR">Greece</option>
+                                <option value="GL">Greenland</option>
+                                <option value="GP">Guadeloupe</option>
                                 <option value="GU">Guam</option>
                                 <option value="GT">Guatemala</option>
-                                <option value="GF">Guayana Francesa</option>
+                                <option value="GF">French Guiana</option>
                                 <option value="GN">Guinea</option>
-                                <option value="GQ">Guinea Ecuatorial</option>
+                                <option value="GQ">Equatorial Guinea</option>
                                 <option value="GW">Guinea-Bissau</option>
                                 <option value="GY">Guyana</option>
-                                <option value="HT">Hait&#237;</option>
+                                <option value="HT">Haiti</option>
                                 <option value="HN">Honduras</option>
-                                <option value="HU">Hungr&#237;a</option>
+                                <option value="HU">Hungary</option>
                                 <option value="IN">India</option>
                                 <option value="ID">Indonesia</option>
-                                <option value="IQ">Irak</option>
-                                <option value="IE">Irlanda</option>
-                                <option value="IS">Islandia</option>
-                                <option value="KY">Islas Caim&#225;n</option>
-                                <option value="CK">Islas Cook</option>
-                                <option value="FO">Islas Feroe</option>
-                                <option value="FK">Islas Malvinas</option>
-                                <option value="MP">Islas Marianas del Norte</option>
-                                <option value="MH">Islas Marshall</option>
-                                <option value="SB">Islas Salom&#243;n</option>
-                                <option value="VG">Islas V&#237;rgenes Brit&#225;nicas</option>
-                                <option value="VI">Islas V&#237;rgenes de los Estados Unidos</option>
+                                <option value="IQ">Iraq</option>
+                                <option value="IE">Ireland</option>
+                                <option value="IS">Iceland</option>
+                                <option value="KY">Cayman Islands</option>
+                                <option value="CK">Cook Islands</option>
+                                <option value="FO">Faroe Islands</option>
+                                <option value="FK">Falkland Islands</option>
+                                <option value="MP">Northern Mariana Islands</option>
+                                <option value="MH">Marshall Islands</option>
+                                <option value="SB">Solomon Islands</option>
+                                <option value="VG">British Virgin Islands</option>
+                                <option value="VI">U.S. Virgin Islands</option>
                                 <option value="IL">Israel</option>
-                                <option value="IT">Italia</option>
+                                <option value="IT">Italy</option>
                                 <option value="JM">Jamaica</option>
-                                <option value="JP">Jap&#243;n</option>
-                                <option value="JO">Jordania</option>
-                                <option value="KZ">Kazajist&#225;n</option>
-                                <option value="KE">Kenia</option>
-                                <option value="KG">Kirguizist&#225;n</option>
+                                <option value="JP">Japan</option>
+                                <option value="JO">Jordan</option>
+                                <option value="KZ">Kazakhstan</option>
+                                <option value="KE">Kenya</option>
+                                <option value="KG">Kyrgyzstan</option>
                                 <option value="KI">Kiribati</option>
                                 <option value="KW">Kuwait</option>
                                 <option value="LA">Laos</option>
-                                <option value="LS">Lesoto</option>
-                                <option value="LV">Letonia</option>
-                                <option value="LB">L&#237;bano</option>
+                                <option value="LS">Lesotho</option>
+                                <option value="LV">Latvia</option>
+                                <option value="LB">Lebanon</option>
                                 <option value="LR">Liberia</option>
-                                <option value="LY">Libia</option>
+                                <option value="LY">Libya</option>
                                 <option value="LI">Liechtenstein</option>
-                                <option value="LT">Lituania</option>
-                                <option value="LU">Luxemburgo</option>
+                                <option value="LT">Lithuania</option>
+                                <option value="LU">Luxembourg</option>
                                 <option value="MO">Macao, China</option>
-                                <option value="MK">Macedonia</option>
+                                <option value="MK">North Macedonia</option>
                                 <option value="MG">Madagascar</option>
-                                <option value="MY">Malasia</option>
+                                <option value="MY">Malaysia</option>
                                 <option value="MW">Malawi</option>
-                                <option value="MV">Maldivas</option>
-                                <option value="ML">Mal&#237;</option>
+                                <option value="MV">Maldives</option>
+                                <option value="ML">Mali</option>
                                 <option value="MT">Malta</option>
-                                <option value="MA">Marruecos</option>
-                                <option value="MQ">Martinica</option>
-                                <option value="MU">Mauricio</option>
+                                <option value="MA">Morocco</option>
+                                <option value="MQ">Martinique</option>
+                                <option value="MU">Mauritius</option>
                                 <option value="MR">Mauritania</option>
                                 <option value="YT">Mayotte</option>
-                                <option value="MX">M&#233;xico</option>
+                                <option value="MX">Mexico</option>
                                 <option value="FM">Micronesia</option>
-                                <option value="MD">Moldavia</option>
-                                <option value="MC">M&#243;naco</option>
+                                <option value="MD">Moldova</option>
+                                <option value="MC">Monaco</option>
                                 <option value="MN">Mongolia</option>
                                 <option value="ME">Montenegro</option>
                                 <option value="MS">Montserrat</option>
@@ -336,90 +335,91 @@
                                 <option value="NR">Nauru</option>
                                 <option value="NP">Nepal</option>
                                 <option value="NI">Nicaragua</option>
-                                <option value="NE">N&#237;ger</option>
+                                <option value="NE">Niger</option>
                                 <option value="NG">Nigeria</option>
                                 <option value="NU">Niue</option>
-                                <option value="NO">Noruega</option>
-                                <option value="NC">Nueva Caledonia</option>
-                                <option value="NZ">Nueva Zelanda</option>
-                                <option value="OM">Om&#225;n</option>
-                                <option value="NL">Pa&#237;ses Bajos</option>
-                                <option value="PK">Pakist&#225;n</option>
-                                <option value="PW">Palaos</option>
-                                <option value="PS">Palestina</option>
-                                <option value="PA">Panam&#225;</option>
-                                <option value="PG">Pap&#250;a Nueva Guinea</option>
+                                <option value="NO">Norway</option>
+                                <option value="NC">New Caledonia</option>
+                                <option value="NZ">New Zealand</option>
+                                <option value="OM">Oman</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="PK">Pakistan</option>
+                                <option value="PW">Palau</option>
+                                <option value="PS">Palestine</option>
+                                <option value="PA">Panama</option>
+                                <option value="PG">Papua New Guinea</option>
                                 <option value="PY">Paraguay</option>
-                                <option value="PE">Per&#250;</option>
-                                <option value="PF">Polinesia Francesa</option>
-                                <option value="PL">Polonia</option>
+                                <option value="PE">Peru</option>
+                                <option value="PF">French Polynesia</option>
+                                <option value="PL">Poland</option>
                                 <option value="PT">Portugal</option>
                                 <option value="PR">Puerto Rico</option>
                                 <option value="QA">Qatar</option>
-                                <option value="GB">Reino Unido</option>
-                                <option value="CF">Rep&#250;blica Centroafricana</option>
-                                <option value="CZ">Rep&#250;blica Checa</option>
-                                <option value="AZ">Rep&#250;blica de Azerbaiy&#225;n</option>
-                                <option value="CD">Rep&#250;blica Democr&#225;tica del Congo</option>
-                                <option selected="selected" value="DO">Rep&#250;blica Dominicana</option>
-                                <option value="GA">Rep&#250;blica Gabonesa</option>
-                                <option value="RE">Reuni&#243;n</option>
-                                <option value="RW">Ruanda</option>
-                                <option value="RO">Ruman&#237;a</option>
-                                <option value="RU">Rusia</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="CF">Central African Republic</option>
+                                <option value="CZ">Czech Republic</option>
+                                <option value="AZ">Azerbaijan</option>
+                                <option value="CD">Democratic Republic of the Congo</option>
+                                <option selected="selected" value="DO">Dominican Republic</option>
+                                <option value="GA">Gabon</option>
+                                <option value="RE">Reunion</option>
+                                <option value="RW">Rwanda</option>
+                                <option value="RO">Romania</option>
+                                <option value="RU">Russia</option>
                                 <option value="WS">Samoa</option>
-                                <option value="AS">Samoa Americana</option>
-                                <option value="KN">San Crist&#243;bal y Nieves</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="KN">Saint Kitts and Nevis</option>
                                 <option value="SM">San Marino</option>
-                                <option value="PM">San Pedro y Miquel&#243;n</option>
-                                <option value="VC">San Vicente y las Granadinas</option>
-                                <option value="SH">Santa Elena</option>
-                                <option value="LC">Santa Luc&#237;a</option>
-                                <option value="ST">Santo Tom&#233; y Pr&#237;ncipe</option>
+                                <option value="PM">Saint Pierre and Miquelon</option>
+                                <option value="VC">Saint Vincent and the Grenadines</option>
+                                <option value="SH">Saint Helena</option>
+                                <option value="LC">Saint Lucia</option>
+                                <option value="ST">Sao Tome and Principe</option>
                                 <option value="SN">Senegal</option>
                                 <option value="RS">Serbia</option>
                                 <option value="SC">Seychelles</option>
-                                <option value="SL">Sierra Leona</option>
-                                <option value="SG">Singapur</option>
+                                <option value="SL">Sierra Leone</option>
+                                <option value="SG">Singapore</option>
                                 <option value="SX">Sint Maarten</option>
-                                <option value="SY">Siria</option>
+                                <option value="SY">Syria</option>
                                 <option value="SO">Somalia</option>
                                 <option value="LK">Sri Lanka</option>
-                                <option value="SZ">Suazilandia</option>
-                                <option value="ZA">Sud&#225;frica</option>
-                                <option value="SD">Sud&#225;n</option>
-                                <option value="SS">Sud&#225;n del Sur</option>
-                                <option value="SE">Suecia</option>
-                                <option value="CH">Suiza</option>
-                                <option value="SR">Surinam</option>
-                                <option value="TH">Tailandia</option>
-                                <option value="TW">Taiw&#225;n</option>
+                                <option value="SZ">Eswatini</option>
+                                <option value="ZA">South Africa</option>
+                                <option value="SD">Sudan</option>
+                                <option value="SS">South Sudan</option>
+                                <option value="SE">Sweden</option>
+                                <option value="CH">Switzerland</option>
+                                <option value="SR">Suriname</option>
+                                <option value="TH">Thailand</option>
+                                <option value="TW">Taiwan</option>
                                 <option value="TZ">Tanzania</option>
-                                <option value="TJ">Tayikist&#225;n</option>
-                                <option value="TL">Timor Oriental</option>
+                                <option value="TJ">Tajikistan</option>
+                                <option value="TL">Timor-Leste</option>
                                 <option value="TG">Togo</option>
                                 <option value="TK">Tokelau</option>
                                 <option value="TO">Tonga</option>
-                                <option value="TT">Trinidad y Tobago</option>
-                                <option value="TN">T&#250;nez</option>
-                                <option value="TC">Turcas y Caicos</option>
-                                <option value="TM">Turkmenist&#225;n</option>
-                                <option value="TR">Turqu&#237;a</option>
+                                <option value="TT">Trinidad and Tobago</option>
+                                <option value="TN">Tunisia</option>
+                                <option value="TC">Turks and Caicos Islands</option>
+                                <option value="TM">Turkmenistan</option>
+                                <option value="TR">Turkey</option>
                                 <option value="TV">Tuvalu</option>
                                 <option value="AE">UAE</option>
-                                <option value="UA">Ucrania</option>
+                                <option value="UA">Ukraine</option>
                                 <option value="UG">Uganda</option>
                                 <option value="UY">Uruguay</option>
-                                <option value="UZ">Uzbekist&#225;n</option>
+                                <option value="UZ">Uzbekistan</option>
                                 <option value="VU">Vanuatu</option>
-                                <option value="VA">Vaticano</option>
+                                <option value="VA">Vatican</option>
                                 <option value="VE">Venezuela</option>
                                 <option value="VN">Vietnam</option>
-                                <option value="WF">Wallis y Futuna</option>
+                                <option value="WF">Wallis and Futuna</option>
                                 <option value="YE">Yemen</option>
                                 <option value="ZM">Zambia</option>
-                                <option value="ZW">Zimbabue</option>
+                                <option value="ZW">Zimbabwe</option>
                             </select>
+
                         </div>
                     </div>
                 </div>
@@ -430,10 +430,10 @@
                     <div class="col-12 col-md-4 mb-3">
                         <div class="d-flex align-items-start">
                             <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                            <label class="mt-1 mb-0" for="user-prov">Provincia</label>
+                            <label class="mt-1 mb-0" for="user-prov">Province</label>
                         </div>
                         <select wire:model.lazy="prov" class="form-select form-select-sm form-control form-control-sm form-control-light">
-                            <option value="0">Seleccionar</option>
+                            <option value="0">Select</option>
                             @foreach( $province_list as $province )
                             <option value="{{ $province->id }}">{{ $province->name }}</option>
                             @endforeach
@@ -443,10 +443,10 @@
                     <div class="col-12 col-md-4 mb-3">
                         <div class="d-flex align-items-start">
                             <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                            <label class="mt-1 mb-0" for="user-cant">Cantón</label>
+                            <label class="mt-1 mb-0" for="user-cant">Canton</label>
                         </div>
                         <select wire:model.lazy="cant" class="form-select form-select-sm form-control-light" @if($lockCanton) disabled @endif>
-                            <option value="0">Seleccionar</option>
+                            <option value="0">Select</option>
                             @foreach( $canton_list as $canton )
                             <option value="{{ $canton->id }}">{{ $canton->name }}</option>
                             @endforeach
@@ -456,10 +456,10 @@
                     <div class="col-12 col-md-4 mb-3">
                         <div class="d-flex align-items-start">
                             <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                            <label class="mt-1 mb-0" for="user-dist">Distrito</label>
+                            <label class="mt-1 mb-0" for="user-dist">District</label>
                         </div>
                         <select wire:model.lazy="dist" class="form-select form-control form-select-sm form-control-light" @if($lockDistrict) disabled @endif>
-                            <option value="0">Seleccionar</option>
+                            <option value="0">Select</option>
                             @foreach( $district_list as $district )
                             <option value="{{ $district->id }}">{{ $district->name }}</option>
                             @endforeach
@@ -476,12 +476,12 @@
                 <div class="question">
                     <div class="d-flex align-items-start">
                         <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                        <p class="mb-0">¿Labora usted para el Ministerio de Educación Pública?</p>
+                        <p class="mb-0">Do you work for the Ministry of Public Education?</p>
                     </div>
                     <div class="ms-4 mt-3 d-flex">
                         <div class="form-check me-5">
                             <input wire:model.lazy="mep" class="form-check-input" id="quest2-15-y" type="radio" name="quest2-15-y" value="si" />
-                            <label class="form-check-label" for="quest2-15-y">Si</label>
+                            <label class="form-check-label" for="quest2-15-y">Yes</label>
                         </div>
                         <div class="form-check">
                             <input wire:model.lazy="mep" class="form-check-input" id="quest2-15-n" type="radio" name="quest2-15-n" value="no" />
@@ -496,9 +496,9 @@
                 @if( $current_step == 3 )
                 @if( $mep == 'si' )
                 {{-- MEP --}}
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Sección 3.</span> Información de docentes del Ministerio de Educación Pública</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Section 3.</span> Information about Public Education Ministry Teachers</h6>
                 {{-- item --}}
-                @livewire('public.enrollment-form.v1.appointment-data', ['mep' => 'si'])
+                @livewire('public.enrollment-form.v1.appointment-data', ['mep' => 'yes'])
 
                 {{-- item --}}
                 <div class="row mb-3">
@@ -506,9 +506,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-service-years">Años de servicio</label>
+                                <label class="mt-1 mb-0" for="user-service-years">Years of service</label>
                             </div>
-                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Ingresa la cantidad de años" />
+                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" />
                             @error('service_years') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -524,9 +524,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-institution">Nombre de la región</label>
+                                <label class="mt-1 mb-0" for="user-institution">Region Name</label>
                             </div>
-                            <input wire:model.lazy="other_region" class="form-control form-control-sm" id="user-custom-region" type="text" placeholder="Ingresa el nombre de la región" />
+                            <input wire:model.lazy="other_region" class="form-control form-control-sm" id="user-custom-region" type="text" placeholder="Enter the region name" />
                             @error('other_region') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -539,9 +539,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-institution">Centro educativo donde labora</label>
+                                <label class="mt-1 mb-0" for="user-institution">Educational institution where you work</label>
                             </div>
-                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Ingresa el nombre de la institución" />
+                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the institution name" />
                             @error('institution') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -553,16 +553,16 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-inst-location">Ingrese la ubicación de la institución</label>
+                                <label class="mt-1 mb-0" for="user-inst-location">Enter the location of the institution</label>
                             </div>
-                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Ingresa el nombre de la institución" />
+                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution" />
                             @error('inst_address') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
                 </div>
                 @else
                 {{-- PRIVADO --}}
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Sección 3.</span>Información de docentes de otras entidades educativas diferentes al Ministerio de Educación Pública o entidades privadas</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Section 3.</span>Information of teachers from other educational institutions different from the Ministry of Public Education or private entities</h6>
                 {{-- item --}}
                 @livewire('public.enrollment-form.v1.appointment-data', ['mep' => 'no'])
 
@@ -572,9 +572,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-service-years">Años de servicio</label>
+                                <label class="mt-1 mb-0" for="user-service-years">Years of service</label>
                             </div>
-                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Ingresa la cantidad de años" />
+                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" />
                             @error('service_years') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -586,9 +586,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-institution">Centro educativo donde labora</label>
+                                <label class="mt-1 mb-0" for="user-institution">Educational institution where you work</label>
                             </div>
-                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Ingresa el nombre de la institución" />
+                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the name of the institution" />
                             @error('institution') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -600,9 +600,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-inst-location">Ingrese la ubicación de la institución</label>
+                                <label class="mt-1 mb-0" for="user-inst-location">Enter the name of the institution.</label>
                             </div>
-                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Ingresa el nombre de la institución" />
+                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the name of the institution." />
                             @error('inst_address') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -615,25 +615,24 @@
 
                 {{-- Step #4 --}}
                 @if( $current_step == 4 )
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Sección 4.</span> Permisos</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3"><span class="text-etc-darkblue">Section 4.</span> Permissions</h6>
 
-                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3">Consentimiento informado de uso de imagen</h6>
+                <h6 class="fw-semi-bold text-etc-lightblue mt-4 mb-3">Informed consent for image use</h6>
 
-                <p>Doy consentimiento para que se realicen tomas de fotografías y grabaciones de texto y
-                    video de mi persona durante las sesiones presenciales. Entiendo que estas
-                    imágenes serán utilizadas únicamente para publicaciones o comunicaciones académicas
-                    en redes sociales y otros medios.</p>
+                <p>I give my consent for photographs and text/video recordings of me to be taken during the in-person sessions.
+                    I understand that these images will be used exclusively for
+                    academic publications or communications on social media and other media outlets.</p>
 
                 {{-- item --}}
                 <div class="question">
                     <div class="d-flex align-items-start">
                         <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                        <p class="mb-0">¿Da su consentimiento para el uso de imagen y grabaciones?</p>
+                        <p class="mb-0">Do you give your consent for the use of your image and recordings?</p>
                     </div>
                     <div class="ms-4 mt-3 d-flex">
                         <div class="form-check me-5">
                             <input wire:model="quest4_1" wire:change="changeStopStatus" class="form-check-input" id="quest4_1-s" type="radio" name="quest4_1-s" value="si" />
-                            <label class="form-check-label" for="quest4_1-s">Si</label>
+                            <label class="form-check-label" for="quest4_1-s">Yes</label>
                         </div>
                         <div class="form-check">
                             <input wire:model="quest4_1" wire:change="changeStopStatus" class="form-check-input" id="quest4_1-n" type="radio" name="quest4_1-n" value="no" />
@@ -641,36 +640,36 @@
                         </div>
                     </div>
                     @if($stop)
-                    <div class="alert alert-danger py-2 px-3" role="alert">¡Es necesario aceptar esta condición para continuar!</div>
+                    <div class="alert alert-danger py-2 px-3" role="alert">It is necessary to accept this condition to continue!</div>
                     @endif
                 </div>
-                 {{-- item --}}
-                            <div class="row mb-3">
-                                <div class="col-12 col-md-8 col-lg-7">
-                                    <div class="">
-                                        <div class="d-flex align-items-start">
-                                            <div class="me-2">
-                                                <img class="img-fluid" src="{{ asset('images/ivetc-point.png') }}" style="max-width: 15px">
-                                            </div>
-                                            <label class="mt-1 mb-0" for="user-photo">Adjunte la imagen del comprobante de pago.</label>
-                                        </div>
-
-                                        <input wire:model="photo" class="form-control form-control-sm" id="user-photo" type="file" accept="image/*" />
-
-                                        @if ($photo)
-                                        <div class="mt-2">
-                                            <img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail" style="max-width: 150px">
-                                        </div>
-                                        @endif
-
-                                        @error('photo')
-                                        <div class="position-relative">
-                                            <small class="text-danger" style="font-size: .8em">{{ $message }}</small>
-                                        </div>
-                                        @enderror
-                                    </div>
+                {{-- item --}}
+                <div class="row mb-3">
+                    <div class="col-12 col-md-8 col-lg-7">
+                        <div class="">
+                            <div class="d-flex align-items-start">
+                                <div class="me-2">
+                                    <img class="img-fluid" src="{{ asset('images/ivetc-point.png') }}" style="max-width: 15px">
                                 </div>
+                                <label class="mt-1 mb-0" for="user-photo">Attach the image of the payment receipt.</label>
                             </div>
+
+                            <input wire:model="photo" class="form-control form-control-sm" id="user-photo" type="file" accept="image/*" />
+
+                            @if ($photo)
+                            <div class="mt-2">
+                                <img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail" style="max-width: 150px">
+                            </div>
+                            @endif
+
+                            @error('photo')
+                            <div class="position-relative">
+                                <small class="text-danger" style="font-size: .8em">{{ $message }}</small>
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
                 @endif
 
                 <!-- {{-- Step #5 --}}

@@ -10,7 +10,7 @@
                     <div class="card-body p-4">
                         <div class="row flex-between-center mb-2">
                             <div class="col-auto">
-                                <h5>Registro de Participante</h5>
+                                <h5>Participant Registration</h5>
                             </div>
                         </div>
 
@@ -21,7 +21,7 @@
                                 <input name="ide" class="form-control" type="text" placeholder="Ingrese su cédula" required />
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary d-block w-100 mt-3" type="submit">Buscar</button>
+                                <button class="btn btn-primary d-block w-100 mt-3" type="submit">Search</button>
                             </div>
 
                             @if ($errors->any())
