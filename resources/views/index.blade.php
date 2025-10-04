@@ -287,14 +287,34 @@
                             <div class="squ3 rounded"></div>
                             <div class="squ4 rounded"></div>
                             <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/med_gerardo_matamoros_arce.jpg') }}" alt="committee-memb">
+                                <img class="img-fluid" src="{{ asset('images/committee/lic_jorge_chaves_blanco.jpg') }}" alt="committee-memb">
                             </div>
                         </div>
                         <div class="member-user">
-                            <p class="text-center mb-0">Gerardo Matamoros Arce</p>
+                            <p class="text-center mb-0">Jorge Chaves Blanco</p>
+                            <p class="text-center mb-0"><i>General Coordinator</i></p>
+                            <div class="inst d-flex justify-content-center align-items-start">
+                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/etai.png') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Member --}}
+                    <div class="member-card">
+                        <div class="member-container position-relative">
+                            <div class="squ1 rounded"></div>
+                            <div class="squ2 rounded"></div>
+                            <div class="squ3 rounded"></div>
+                            <div class="squ4 rounded"></div>
+                            <div class="member-image shadow border">
+                                <img class="img-fluid" src="{{ asset('images/committee/rommy_acuña_ramirez.JPG') }}" alt="committee-memb">
+                            </div>
+                        </div>
+                        <div class="member-user">
+                            <p class="text-center mb-0">Rommy Acuña Ramirez</p>
                             <p class="text-center mb-0"><i>Academic Coordinator</i></p>
                             <div class="inst d-flex justify-content-center align-items-start">
-                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/utn.png') }}" alt="">
+                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/uned.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -312,7 +332,7 @@
                         </div>
                         <div class="member-user">
                             <p class="text-center mb-0">Ana Gabriela Hernández Salazar</p>
-                            <p class="text-center mb-0"><i>Academic Coordinator</i></p>
+                            <p class="text-center mb-0"><i>Outreach Coordinator</i></p>
                             <div class="inst d-flex justify-content-center align-items-start">
                                 <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/tec.jpg') }}" alt="">
                             </div>
@@ -335,6 +355,66 @@
                             <p class="text-center mb-0"><i>Logistics Coordinator</i></p>
                             <div class="inst d-flex justify-content-center align-items-start">
                                 <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/casc.png') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Member --}}
+                    <div class="member-card">
+                        <div class="member-container position-relative">
+                            <div class="squ1 rounded"></div>
+                            <div class="squ2 rounded"></div>
+                            <div class="squ3 rounded"></div>
+                            <div class="squ4 rounded"></div>
+                            <div class="member-image shadow border">
+                                <img class="img-fluid" src="{{ asset('images/committee/med_gerardo_matamoros_arce.jpg') }}" alt="committee-memb">
+                            </div>
+                        </div>
+                        <div class="member-user">
+                            <p class="text-center mb-0">Gerardo Matamoros Arce</p>
+                            <p class="text-center mb-0"><i>Academic Coordinator</i></p>
+                            <div class="inst d-flex justify-content-center align-items-start">
+                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/utn.png') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Member --}}
+                    <div class="member-card">
+                        <div class="member-container position-relative">
+                            <div class="squ1 rounded"></div>
+                            <div class="squ2 rounded"></div>
+                            <div class="squ3 rounded"></div>
+                            <div class="squ4 rounded"></div>
+                            <div class="member-image shadow border">
+                                <img class="img-fluid" src="{{ asset('images/committee/jairo_viales_angulo.jpeg') }}" alt="committee-memb">
+                            </div>
+                        </div>
+                        <div class="member-user">
+                            <p class="text-center mb-0">Jairo Viales Angulo</p>
+                            <p class="text-center mb-0"><i>Committee member</i></p>
+                            <div class="inst d-flex justify-content-center align-items-start">
+                                <img class="img-fluid" style="max-width: 50px" src="{{ asset('images/committee/una.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Member --}}
+                    <div class="member-card">
+                        <div class="member-container position-relative">
+                            <div class="squ1 rounded"></div>
+                            <div class="squ2 rounded"></div>
+                            <div class="squ3 rounded"></div>
+                            <div class="squ4 rounded"></div>
+                            <div class="member-image shadow border">
+                                <img class="img-fluid" src="{{ asset('images/committee/juan_luis_zamora_solano.jpeg') }}" alt="committee-memb">
+                            </div>
+                        </div>
+                        <div class="member-user">
+                            <p class="text-center mb-0">Juan Luis Zamora Solano</p>
+                            <p class="text-center mb-0"><i>Committee member</i></p>
+                            <div class="inst d-flex justify-content-center align-items-start">
+                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/etai.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -387,26 +467,6 @@
                             <div class="squ3 rounded"></div>
                             <div class="squ4 rounded"></div>
                             <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/jairo_viales_angulo.jpeg') }}" alt="committee-memb">
-                            </div>
-                        </div>
-                        <div class="member-user">
-                            <p class="text-center mb-0">Jairo Viales Angulo</p>
-                            <p class="text-center mb-0"><i>Committee member</i></p>
-                            <div class="inst d-flex justify-content-center align-items-start">
-                                <img class="img-fluid" style="max-width: 50px" src="{{ asset('images/committee/una.jpg') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Member --}}
-                    <div class="member-card">
-                        <div class="member-container position-relative">
-                            <div class="squ1 rounded"></div>
-                            <div class="squ2 rounded"></div>
-                            <div class="squ3 rounded"></div>
-                            <div class="squ4 rounded"></div>
-                            <div class="member-image shadow border">
                                 <img class="img-fluid" src="{{ asset('images/committee/adrian_carmona_miranda.jpeg') }}" alt="committee-memb">
                             </div>
                         </div>
@@ -415,26 +475,6 @@
                             <p class="text-center mb-0"><i>Committee member</i></p>
                             <div class="inst d-flex justify-content-center align-items-start">
                                 <img class="img-fluid" style="max-width: 50px" src="{{ asset('images/committee/una.jpg') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Member --}}
-                    <div class="member-card">
-                        <div class="member-container position-relative">
-                            <div class="squ1 rounded"></div>
-                            <div class="squ2 rounded"></div>
-                            <div class="squ3 rounded"></div>
-                            <div class="squ4 rounded"></div>
-                            <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/juan_luis_zamora_solano.jpeg') }}" alt="committee-memb">
-                            </div>
-                        </div>
-                        <div class="member-user">
-                            <p class="text-center mb-0">Juan Luis Zamora Solano</p>
-                            <p class="text-center mb-0"><i>Committee member</i></p>
-                            <div class="inst d-flex justify-content-center align-items-start">
-                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/etai.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -507,26 +547,6 @@
                             <div class="squ3 rounded"></div>
                             <div class="squ4 rounded"></div>
                             <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/rommy_acuña_ramirez.JPG') }}" alt="committee-memb">
-                            </div>
-                        </div>
-                        <div class="member-user">
-                            <p class="text-center mb-0">Rommy Acuña Ramirez</p>
-                            <p class="text-center mb-0"><i>Committee member</i></p>
-                            <div class="inst d-flex justify-content-center align-items-start">
-                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/uned.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Member --}}
-                    <div class="member-card">
-                        <div class="member-container position-relative">
-                            <div class="squ1 rounded"></div>
-                            <div class="squ2 rounded"></div>
-                            <div class="squ3 rounded"></div>
-                            <div class="squ4 rounded"></div>
-                            <div class="member-image shadow border">
                                 <img class="img-fluid" src="{{ asset('images/committee/mariana_valerio_vindas.jpg') }}" alt="committee-memb">
                             </div>
                         </div>
@@ -535,26 +555,6 @@
                             <p class="text-center mb-0"><i>Committee member</i></p>
                             <div class="inst d-flex justify-content-center align-items-start">
                                 <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/utn.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- Member --}}
-                    <div class="member-card">
-                        <div class="member-container position-relative">
-                            <div class="squ1 rounded"></div>
-                            <div class="squ2 rounded"></div>
-                            <div class="squ3 rounded"></div>
-                            <div class="squ4 rounded"></div>
-                            <div class="member-image shadow border">
-                                <img class="img-fluid" src="{{ asset('images/committee/lic_jorge_chaves_blanco.jpg') }}" alt="committee-memb">
-                            </div>
-                        </div>
-                        <div class="member-user">
-                            <p class="text-center mb-0">Jorge Chaves Blanco</p>
-                            <p class="text-center mb-0"><i>General Coordinator</i></p>
-                            <div class="inst d-flex justify-content-center align-items-start">
-                                <img class="img-fluid" style="max-width: 100px" src="{{ asset('images/committee/etai.png') }}" alt="">
                             </div>
                         </div>
                     </div>
