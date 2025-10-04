@@ -105,7 +105,7 @@
             <td style="text-align:center;font-size:11px;">
                 <p class="etc-orange" style="text-transform: uppercase; font-weight: bold; font-size: 12px; margin-bottom: 10px">Follow us on social media!</p>
                 <p style="margin:0">
-                    <a target="_blank" href="https://www.facebook.com/IVETC2022" style="text-decoration:none; margin: 0 3px">
+                    <a target="_blank" href="https://www.facebook.com/VETC2025/" style="text-decoration:none; margin: 0 3px">
                         <img src="/images/facebook.png" width="25" height="25" alt="f" style="display:inline-block;color:#cccccc;opacity: .5">
                     </a>
                     <a target="_blank" href="https://www.instagram.com/ivenglishteaching/ " style="text-decoration:none; margin: 0 3px">

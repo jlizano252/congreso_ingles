@@ -192,7 +192,7 @@
                     <img class="img-fluid mt-3" style="max-width: 169px" src="{{ asset('images/ivetc_img_02.png') }}" alt="">
                     <div style="height: 60px; width: 2px; background-color: rgba(0,0,0,.4); margin: 0 15px"></div>
                     <div class="d-flex justify-content-start align-items-center">
-                        <a class="social-icon" href="https://www.facebook.com/IVETC2022 " target="_blank">
+                        <a class="social-icon" href="https://www.facebook.com/VETC2025/" target="_blank">
                             <img style="max-width: 40px; opacity: .5" class="img-fluid mx-2" src="{{ asset('images/facebook.png') }}" alt="facebook">
                         </a>
                         <a class="social-icon" href="https://www.instagram.com/ivenglishteaching/ " target="_blank">
