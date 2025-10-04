@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
+
     <title>V-ETC</title>
 </head>
 {{--<body id="page-body" data-bs-spy="scroll" data-bs-target="#ivetc-menu" data-bs-offset="40" tabindex="0">--}}
@@ -113,15 +114,20 @@
                                 <div class="col-4 center-pill pill shadow rounded d-flex justify-content-center align-items-center text-white mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <h5>CALENDAR</h5>
                                 </div>
+                                <div class="col-3 right-pill pill shadow rounded d-flex justify-content-center align-items-center text-white"
+                                    data-bs-toggle="modal" data-bs-target="#mapaModal">
+                                    <h5 class="d-none d-lg-block">MAP</h5>
+                                    <h6 class="d-block d-lg-none">MAP</h6>
+                                </div>
                                 {{-- <div class="col-3 right-pill pill shadow rounded d-flex justify-content-center align-items-center text-white" data-bs-toggle="modal" data-bs-target="#modalityModal">
-                                    <h5 class="d-none d-lg-block">MODALITY</h5>
-                                    <h6 class="d-block d-lg-none">MODALITY</h6> --}}
+                                        <h5 class="d-none d-lg-block">MODALITY</h5>
+                                        <h6 class="d-block d-lg-none">MODALITY</h6> 
+                                    </div>--}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -248,6 +254,22 @@
                     </ul>
                 </div>
             </div>
+    </section>
+
+    <section class="campus-map py-5">
+        <div class="container">
+            <h1 class="title text-uppercase mb-4"><strong>Campus Map</strong></h1>
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    <!-- Contenedor del mapa -->
+                    <div id="mapContainer" style="width: 100%; height: 600px;"></div>
+                </div>
+                <div class="col-12 col-lg-3 mt-3 mt-lg-0">
+                    <!-- Menú lateral derecho -->
+                    <div id="hotspotMenu" style="max-height: 600px; overflow-y: auto; padding-left: 10px;"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="waves-bg">
@@ -920,6 +942,17 @@
     <script>
         let scrollSpy = new bootstrap.ScrollSpy(document.body, {
             target: '#ivetc-menu'
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="module">
+        import {
+            initCampusMap
+        } from '/js/campusMap.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initCampusMap('mapContainer', 'hotspotMenu', '/images/map_etai.png');
         });
     </script>
 
