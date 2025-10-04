@@ -29,32 +29,34 @@ class DatabaseSeeder extends Seeder
         IdeType::create(['name' => 'Passport (Pasaporte)', 'slug' => Str::slug('Passport (Pasaporte)')]);
         IdeType::create(['name' => 'Residence ID (Cédula de residencia)', 'slug' => Str::slug('Residence ID (Cédula de residencia)')]);
         //
-        GenderType::create(['name' => 'Femenino', 'slug' => Str::slug('Femenino')]);
-        GenderType::create(['name' => 'Masculino', 'slug' => Str::slug('Masculino')]);
-        GenderType::create(['name' => 'Prefiero no decirlo', 'slug' => Str::slug('Ninguno')]);
+        GenderType::create(['name' => 'Female', 'slug' => Str::slug('Female')]);
+        GenderType::create(['name' => 'Male', 'slug' => Str::slug('Male')]);
+        GenderType::create(['name' => 'I prefer not to say', 'slug' => Str::slug('None')]);
         //
-        EducationalRegion::create(['name' => 'Dirección Regional de Educación Norte-Norte', 'slug' => Str::slug('Norte')]);
-        EducationalRegion::create(['name' => 'Dirección Regional de Educación Occidente', 'slug' => Str::slug('Occidente')]);
-        EducationalRegion::create(['name' => 'Dirección Regional de Educación San Carlos', 'slug' => Str::slug('San Carlos')]);
-        EducationalRegion::create(['name' => 'Dirección Regional de Educación Sarapiquí', 'slug' => Str::slug('Sarapiquí')]);
-        EducationalRegion::create(['name' => 'Otra', 'slug' => Str::slug('Otra')]);
+        EducationalRegion::create(['name' => 'Northern-North Regional Education Directorate', 'slug' => Str::slug('North')]);
+        EducationalRegion::create(['name' => 'Western Regional Education Directorate', 'slug' => Str::slug('Occidental')]);
+        EducationalRegion::create(['name' => 'San Carlos Regional Education Directorate', 'slug' => Str::slug('San Carlos')]);
+        EducationalRegion::create(['name' => 'Sarapiquí Regional Education Directorate', 'slug' => Str::slug('Sarapiquí')]);
+        EducationalRegion::create(['name' => 'Other', 'slug' => Str::slug('Other')]);
         //
-        EducationalLevel::create(['name' => 'Educación inicial', 'slug' => Str::slug('Educación inicial')]);
-        EducationalLevel::create(['name' => 'Educación primaria', 'slug' => Str::slug('Educación primaria')]);
-        EducationalLevel::create(['name' => 'Educación secundaria', 'slug' => Str::slug('Educación secundaria')]);
-        EducationalLevel::create(['name' => 'Educación diversificada técnica', 'slug' => Str::slug('Educación diversificada técnica')]);
-        EducationalLevel::create(['name' => 'Educación superior', 'slug' => Str::slug('Educación superior')]);
-        EducationalLevel::create(['name' => 'Educación técnica parauniversitaria', 'slug' => Str::slug('Educación técnica parauniversitaria')]);
-        EducationalLevel::create(['name' => 'Persona trabajadora independiente', 'slug' => Str::slug('Persona trabajadora independiente')]);
-        //
-        AppointmentType::create(['name' => 'Interino', 'type' => 'ministerio', 'slug' => Str::slug('Interino MEP')]);
-        AppointmentType::create(['name' => 'Propiedad', 'type' => 'ministerio', 'slug' => Str::slug('Propiedad MEP')]);
-        AppointmentType::create(['name' => 'Nombramiento por tiempo definido', 'type' => 'ministerio', 'slug' => Str::slug('Nombramiento por tiempo definido MEP')]);
-        AppointmentType::create(['name' => 'Interino', 'type' => 'privado', 'slug' => Str::slug('Interino PRIVADO')]);
-        AppointmentType::create(['name' => 'Nombramiento por tiempo indefinido', 'type' => 'privado', 'slug' => Str::slug('Nombramiento por tiempo definido PRIVADO')]);
+        EducationalLevel::create(['name' => 'Early Education', 'slug' => Str::slug('Early Education')]);
+        EducationalLevel::create(['name' => 'Primary Education', 'slug' => Str::slug('Primary Education')]);
+        EducationalLevel::create(['name' => 'Secondary Education', 'slug' => Str::slug('Secondary Education')]);
+        EducationalLevel::create(['name' => 'Technical Diversified Education', 'slug' => Str::slug('Technical Diversified Education')]);
+        EducationalLevel::create(['name' => 'Higher Education', 'slug' => Str::slug('Higher Education')]);
+        EducationalLevel::create(['name' => 'Technical Post-Secondary Education', 'slug' => Str::slug('Technical Post-Secondary Education')]);
+        EducationalLevel::create(['name' => 'Independent Worker', 'slug' => Str::slug('Independent Worker')]);
+
+        // Appointment types
+        AppointmentType::create(['name' => 'Interim', 'type' => 'ministerio', 'slug' => Str::slug('Interim MEP')]);
+        AppointmentType::create(['name' => 'Permanent', 'type' => 'ministerio', 'slug' => Str::slug('Permanent MEP')]);
+        AppointmentType::create(['name' => 'Fixed-term Appointment', 'type' => 'ministerio', 'slug' => Str::slug('Fixed-term Appointment MEP')]);
+        AppointmentType::create(['name' => 'Interim', 'type' => 'privado', 'slug' => Str::slug('Interim PRIVATE')]);
+        AppointmentType::create(['name' => 'Indefinite-term Appointment', 'type' => 'privado', 'slug' => Str::slug('Indefinite-term Appointment PRIVATE')]);
+
 
         //
-        User::create(['ide'=>'207860302', 'ide_type'=>1, 'admin'=>1, 'name'=>'Jenhson', 'lastname'=>'Lizano Villalobos', 'email'=>'lizanovillalobosjenhson@gmail.com', 'password'=>Hash::make('Puravida2025.')]);
+        User::create(['ide' => '207860302', 'ide_type' => 1, 'admin' => 1, 'name' => 'Jenhson', 'lastname' => 'Lizano Villalobos', 'email' => 'lizanovillalobosjenhson@gmail.com', 'password' => Hash::make('Puravida2025.')]);
         //User::create(['ide'=>'602930599', 'ide_type'=>1, 'name'=>'Patricia', 'lastname1'=>'López', 'lastname2'=>'Estrada', 'email'=>'plopez.estrada@gmail.com', 'password'=>Hash::make('Patricia2022.')]);
 
     }

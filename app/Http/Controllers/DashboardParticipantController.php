@@ -69,7 +69,7 @@ class DashboardParticipantController extends Controller
 
         if (!empty($registered)) {
             $participant->applicants()->syncWithoutDetaching($registered);
-            return redirect()->route('home')->with('message', 'Inscripción realizada correctamente');
+            return redirect()->route('home_dashboard')->with('message', 'Inscripción realizada correctamente');
         }
 
         return back()->withErrors(['topics' => 'No hay cupos disponibles o ya está registrado en los topics seleccionados']);
