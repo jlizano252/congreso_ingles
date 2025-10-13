@@ -114,8 +114,7 @@
                                 <div class="col-4 center-pill pill shadow rounded d-flex justify-content-center align-items-center text-white mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <h5>CALENDAR</h5>
                                 </div>
-                                <div class="col-3 right-pill pill shadow rounded d-flex justify-content-center align-items-center text-white"
-                                    data-bs-toggle="modal" data-bs-target="#mapaModal">
+                                <div id="scrollToMapBtn" class="col-3 right-pill pill shadow rounded d-flex justify-content-center align-items-center text-white">
                                     <h5 class="d-none d-lg-block">MAP</h5>
                                     <h6 class="d-block d-lg-none">MAP</h6>
                                 </div>
@@ -140,11 +139,13 @@
                 <div class="col-12 col-lg-6 mt-4 mt-lg-0">
                     <h1 class="title text-uppercase"><strong>About us</strong></h1>
 
-                    <p style="line-height: 1.8">The Costa Rican educational system currently finds itself in a fragile state given its unresolved structural problems, which date back to years prior to 2018. Since then, these problems have been aggravated by distinct forces: union strikes, teacher strikes and the pandemic. The State of Education (Program Estado de la Nación, 2021) catalogues this crisis as the worst in the recent decades, branding it an
-                        educational shut down. This emergency has affected all three levels of the Costa Rican educational system: primary, secondary, and diversified.
+                    <p style="line-height: 1.8">Teacher burnout is a global crisis that affects the quality of education and the personal well-being of educators.
+                        According to UNESCO (2023), more than 40% of teachers in Latin America and the Caribbean report high levels of stress and exhaustion,
+                        which negatively impacts their performance in the classroom and their students' motivation. The World Health Organization (WHO, 2019)
+                        recognized burnout as an “occupational syndrome,” characterized by emotional exhaustion, depersonalization, and reduced sense of accomplishment. 
                         <br>
-                        As a result of this situation, the weaknesses and needs of the teaching population are not only evident, but are considered a crucial and strategic point in the resurrection of the Costa Rican
-                        educational system.
+                        There are no statistics for Costa Rica, but it is estimated to be more common than previously thought. International studies indicate that at least
+                        8% of depressive disorders ...
                     </p>
 
                     <a class="btn info_btn info_btn fw-normal px-5 mt-4" href="{{ route('webpage.details') }}">Read more about...</a>
@@ -256,13 +257,13 @@
             </div>
     </section>
 
-    <section class="campus-map py-5">
+    <section class="campus-map py-5" style="position: relative; z-index: 1;">
         <div class="container">
             <h1 class="title text-uppercase mb-4"><strong>Campus Map</strong></h1>
             <div class="row">
                 <div class="col-12 col-lg-9">
                     <!-- Contenedor del mapa -->
-                    <div id="mapContainer" style="width: 100%; height: 600px;"></div>
+                    <div id="mapContainer" style="width: 100%; height: 600px; position: relative; z-index: 1;"></div>
                 </div>
                 <div class="col-12 col-lg-3 mt-3 mt-lg-0">
                     <!-- Menú lateral derecho -->
@@ -637,26 +638,33 @@
             </div>
         </section> -->
 
-        <section class="footer py-3">
-            <div class="d-flex justify-content-center">
+        <section class="footer bg-dark py-3 text-white">
+            <div class="d-flex justify-content-center mb-3">
                 <img class="img-fluid" style="max-width: 120px;" src="{{ asset('images/ivetc-brand-footer.png') }}" alt="footer-image">
             </div>
-            <p class="text-center text-white small fw-light mb-0"><strong>V CONGRESO DE LA ENSEÑANZA DEL INGLÉS</strong></p>
-            <p class="text-center text-white-50 small fw-normal mb-0">REGIÓN HUETAR NORTE 2025</p>
 
-            <div class="footer-menu text-center my-4 text-white-50">
+            <p class="text-center text-white small fw-light mb-0"><strong>5TH CONGRESS OF ENGLISH TEACHING</strong></p>
+            <p class="text-center text-white-50 small fw-normal mb-3">HUETAR NORTE REGION 2025</p>
+
+            <div class="footer-menu text-center my-3 text-white-50">
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">COMMITTEES</a> |
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">PARTNERS</a> |
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">CONTACTS</a>
             </div>
 
-            <div class=" mb-4">
-                {{-- <div class="d-flex justify-content-center align-items-center">--}}
-                {{-- <img style="max-width: 20px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/facebook.png') }}" alt="facebook">--}}
-                {{-- <img style="max-width: 20px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/instagram.png') }}" alt="facebook">--}}
-                {{-- <img style="max-width: 30px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/youtube.png') }}" alt="facebook">--}}
-                {{-- </div>--}}
+            <!-- Developer credit con foto -->
+            <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+                <img src="{{ asset('images/committee/jenhson_lizano.jpeg') }}"
+                    alt="Jenhson Lizano"
+                    class="rounded-circle img-fluid"
+                    style="width: 60px; height: 60px; border: 2px solid #ccc; transition: transform 0.3s;"
+                    onmouseover="this.style.transform='scale(3)';"
+                    onmouseout="this.style.transform='scale(1)';">
+                <p class="mb-0 text-white-50 small">Website developed by <strong>Jenhson Lizano Villalobos</strong> T.I. ETAI Department</p>
             </div>
+
+            <!-- Copyright -->
+            <p class="text-center text-white-50 small mt-2 mb-0">&copy; 2025 VETC. All rights reserved.</p>
         </section>
         <div class="footer-border"></div>
     </div>
@@ -767,13 +775,13 @@
                     </div>
 
                     <h3 class="text-uppercase mb-4 mt-5 text-warning"><strong>Importance</strong></h3>
-                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">English is the most widely used lingua franca in the world; therefore, it is an indispensable tool for the development of competencies in academic and socio-productive settings. At the national level, and especially at the local level, this conference will strengthen the national strategy on the importance of expanding English language teaching coverage through inter-institutional collaboration and regionalization. In this regard, the 5th Conference on English Language Teaching of the Huetar Norte Region 2025 aims to establish itself as a space for the exchange of pedagogical experiences through dialogue on the emerging challenges and realities faced by teachers in the region. </p>
+                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">English is the most widely used lingua franca in the world; therefore, it is an indispensable tool for the development of competencies in academic and socio-productive settings. At the national level, and especially at the local level, this congress will strengthen the national strategy on the importance of expanding English language teaching coverage through inter-institutional collaboration and regionalization. In this regard, the V English Teaching Congress of the Northern Region aims to establish itself as a space for the exchange of pedagogical experiences through dialogue on the emerging challenges and realities faced by teachers in the region. </p>
 
                     <h3 class="text-uppercase mb-4 mt-3 text-darkblue"><strong>Scope</strong></h3>
-                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">The aim of this conference is to strengthen academic spaces for the enhancement of effective pedagogical practices in the teaching of English as a foreign language, through the establishment of partnerships and collaborative networks that promote the economic, socio-educational, and cultural development of the Huetar Norte Region of Costa Rica. </p>
+                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">The aim of this congress is to strengthen academic spaces for the enhancement of effective pedagogical practices in the teaching of English as a foreign language, through the establishment of partnerships and collaborative networks that promote the economic, socio-educational, and cultural development of the Huetar Norte Region of Costa Rica. </p>
 
                     <h3 class="text-uppercase mb-4 mt-3 text-warning"><strong>Target Population</strong></h3>
-                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">This fifth conference seeks not only to enhance and provide teachers with good educational practices, but also to promote the participation of English teachers from areas with low socio-economic indicators and socio-educational vulnerability across the four regions that make up the Huetar Norte Region: San Carlos, Norte-Norte (Upala, Guatuso, Los Chiles), Sarapiquí (the districts of Puerto Viejo and La Virgen in the canton of Sarapiquí), and Occidente (the district of San Isidro de Peñas Blancas in the canton of San Ramón). </p>
+                    <p style="border-left: 15px solid lightgrey; padding: 0 0 0 20px">The V ETC seeks not only to enhance and provide teachers with good educational practices, but also to promote the participation of English teachers from areas with low socio-economic indicators and socio-educational vulnerability across the four regions that make up the Huetar Norte Region: San Carlos, Norte-Norte (Upala, Guatuso, Los Chiles), Sarapiquí (the districts of Puerto Viejo and La Virgen in the canton of Sarapiquí), and Occidente (the district of San Isidro de Peñas Blancas in the canton of San Ramón). </p>
 
                     <div class="d-flex justify-content-end mt-3 mb-3">
                         <button class="btn info_btn info_btn fw-normal px-5 mt-4" data-bs-dismiss="modal">Close</button>

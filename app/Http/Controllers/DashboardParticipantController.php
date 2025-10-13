@@ -9,58 +9,61 @@ use App\Models\User;
 
 class DashboardParticipantController extends Controller
 {
+    // 1️⃣ Show participant dashboard
     public function index()
     {
         return view('dashboard-mod.index-participant');
     }
 
-    // 2️⃣ Buscar participante por cédula y mostrar temas
+    // 2️⃣ Search participant by ID and display topics
     public function findParticipant(Request $request)
     {
-        // Buscar el usuario por IDE
+        // Find the user by IDE
         $user = User::where('ide', $request->ide)->first();
 
         if (!$user) {
-            return back()->withErrors(['ide' => 'No se encontró la cédula/IDE en la base de datos']);
+            return back()->withErrors(['ide' => 'The ID/IDE was not found in the database']);
         }
 
-        // Buscar participante asociado y cargar el usuario
-        $participant = Participant::with('user', 'applicants')->where('user_id', $user->id)->first();
+        // Find the participant linked to this user and load relations
+        $participant = Participant::with('user', 'applicants')
+            ->where('user_id', $user->id)
+            ->first();
 
         if (!$participant || !$participant->user) {
-            return back()->withErrors(['ide' => 'El participante no tiene un usuario válido asociado']);
+            return back()->withErrors(['ide' => 'The participant does not have a valid associated user']);
         }
 
-        // Cargar todos los applicants disponibles (o filtrados según tu lógica)
-        $applicants = Applicant::all(); // Aquí podrías filtrar por tipo, fecha, etc.
+        // Load all available applicants (you can filter them as needed)
+        $applicants = Applicant::all(); // You can filter by type, date, etc.
 
-        // Retornar la vista con la info del participante y los applicants
+        // Return the view with participant and applicants info
         return view('dashboard-mod.participant-topics', compact('participant', 'applicants'));
     }
 
-    // 3️⃣ Registrar inscripción de los temas
+    // 3️⃣ Register topic enrollment
     public function register(Request $request)
     {
         $participant = Participant::findOrFail($request->participant_id);
         $topics = $request->input('topics', []);
 
         if (empty($topics)) {
-            return back()->withErrors(['topics' => 'Debe seleccionar al menos un topic']);
+            return back()->withErrors(['topics' => 'You must select at least one topic']);
         }
 
         $registered = [];
-        $capacity = 10; // cupos máximos por topic
+        $capacity = 10; // maximum number of participants per topic
 
         foreach ($topics as $topicId) {
             $topic = Applicant::find($topicId);
             if (!$topic) continue;
 
-            // Verificar si el participante ya está registrado
+            // Check if participant is already registered
             if ($participant->applicants()->where('applicant_id', $topicId)->exists()) {
-                continue; // ya está inscrito, saltar
+                continue; // already registered, skip
             }
 
-            // Contador dinámico
+            // Dynamic counter
             $currentCount = $topic->participants()->count();
             if ($currentCount < $capacity) {
                 $registered[] = $topicId;
@@ -69,9 +72,10 @@ class DashboardParticipantController extends Controller
 
         if (!empty($registered)) {
             $participant->applicants()->syncWithoutDetaching($registered);
-            return redirect()->route('home_dashboard')->with('message', 'Inscripción realizada correctamente');
+            return redirect()->route('home_dashboard')
+                ->with('message', 'Registration completed successfully');
         }
 
-        return back()->withErrors(['topics' => 'No hay cupos disponibles o ya está registrado en los topics seleccionados']);
+        return back()->withErrors(['topics' => 'No spots available or already registered for the selected topics']);
     }
 }

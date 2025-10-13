@@ -24,7 +24,7 @@
 
     <p style="margin-top: 20px">Dear participant: <strong style="text-transform: capitalize">{{ $params['name'] }}</strong></p>
 
-    <h4 class="etc-darkblue" style="font-weight: bold; margin: 20px 0; text-align: center; text-transform: uppercase">Welcome to the IV English Teaching Congress of Huetar Northern Region 2022!</h4>
+    <h4 class="etc-darkblue" style="font-weight: bold; margin: 20px 0; text-align: center; text-transform: uppercase">Welcome to the V English Teaching Congress of Huetar Northern Region 2022!</h4>
     <p style="text-align: center">You have been officially registered in the Moodle platform, which will be the Learning Management
         System (LMS) for the congress.</p>
 

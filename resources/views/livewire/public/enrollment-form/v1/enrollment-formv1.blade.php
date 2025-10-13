@@ -25,8 +25,8 @@
         <form wire:submit.prevent="processData" autocomplete="off">
             <div class="card-body px-lg-4 fs--1" style="line-height: 1.8">
                 <div class="mb-3">
-                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">5th Congress on the Teaching of English
-                        <br> of the Northern Huetar Region 2025
+                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">V ENGLISH TEACHING CONGRESS
+                        <br> OF THE NORTHERN HUETAR REGION 2025
                     </h4>
                 </div>
 
@@ -44,7 +44,7 @@
 
                 <div class="text-secondary">
                     <p>Dear Participant,</p>
-                    <p>The 5th English Teaching Congress of the Northern Huetar Region 2025 will be held in person on Thursday, November 27th, and Friday,
+                    <p>The V English Teaching Congress of the Northern Huetar Region 2025 will be held in person on Thursday, November 27th, and Friday,
                         November 28th, from 8:00 a.m. to 4:00 p.m.</p>
                     <!-- <p>Se otorgará un certificado de participación a aquellas personas que así lo soliciten y paguen el
                         monto de 5 000 colones, debido a que solo se reconoce para carrera profesional cuando el
@@ -165,7 +165,7 @@
                             </div>
                             <input wire:model.lazy="mobile" class="form-control form-control-sm" id="user-mobile" type="text" placeholder="Enter your phone number" />
                             @error('mobile') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
-                            <span class="small text-muted"><i><span class="text-danger me-1">*</span>Format: +### ####-####</i></span>
+                            <span class="small text-muted"><i><span class="text-danger me-1">*</span>Format: ####-####</i></span>
                         </div>
                     </div>
                 </div>
@@ -600,9 +600,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-inst-location">Enter the name of the institution.</label>
+                                <label class="mt-1 mb-0" for="user-inst-location">Enter the location of the institution.</label>
                             </div>
-                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the name of the institution." />
+                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution." />
                             @error('inst_address') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -646,30 +646,58 @@
                 {{-- item --}}
                 <div class="row mb-3">
                     <div class="col-12 col-md-8 col-lg-7">
-                        <div class="">
+                        <div>
                             <div class="d-flex align-items-start">
                                 <div class="me-2">
                                     <img class="img-fluid" src="{{ asset('images/ivetc-point.png') }}" style="max-width: 15px">
                                 </div>
-                                <label class="mt-1 mb-0" for="user-photo">Attach the image of the payment receipt.</label>
+                                <label class="mt-1 mb-0 fw-semibold" for="user-photo">Attach the image of the payment receipt</label>
                             </div>
 
-                            <input wire:model="photo" class="form-control form-control-sm" id="user-photo" type="file" accept="image/*" />
+                            <input wire:model="photo" class="form-control form-control-sm mt-2" id="user-photo" type="file" accept="image/*" />
 
                             @if ($photo)
-                            <div class="mt-2">
-                                <img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail" style="max-width: 150px">
+                            <div class="mt-3 text-center">
+                                <img src="{{ $photo->temporaryUrl() }}" class="img-thumbnail shadow-sm" style="max-width: 180px; border-radius: 10px;">
                             </div>
                             @endif
 
                             @error('photo')
-                            <div class="position-relative">
-                                <small class="text-danger" style="font-size: .8em">{{ $message }}</small>
+                            <div class="position-relative mt-1">
+                                <small class="text-danger" style="font-size: .85em">{{ $message }}</small>
                             </div>
                             @enderror
+
+                            <!-- Información del participante -->
+                            <div class="mt-4 border rounded-3 p-3 bg-white shadow-sm">
+                                <h6 class="fw-bold text-primary mb-3">Participant Fee Information</h6>
+
+                                <p class="mb-2"><strong>Price:</strong> ₡13,800</p>
+
+                                <p class="mb-1 fw-semibold">Includes:</p>
+                                <ul class="mb-3 ps-3">
+                                    <li>Pre-congress activities</li>
+                                    <li>On-site training sessions</li>
+                                    <li>Meals (2 coffee breaks and lunch per day)</li>
+                                    <li>Materials</li>
+                                    <li>Digital certificate</li>
+                                    <li>Souvenirs</li>
+                                </ul>
+
+                                <div class="bg-light p-3 rounded-3">
+                                    <p class="mb-1"><strong>Bank Account (BCR):</strong> CR42015201001048353957</p>
+                                    <p class="mb-1"><strong>SINPE Móvil:</strong> 8839-2811</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.9em;">
+                                        The account is under <strong>3-101-784163 S.A.</strong>, and the SINPE may appear under
+                                        <strong>Caep</strong> or the same legal ID.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
                 @endif
 
                 <!-- {{-- Step #5 --}}

@@ -25,8 +25,8 @@
         <form wire:submit.prevent="processData" autocomplete="off">
             <div class="card-body px-lg-4 fs--1" style="line-height: 1.8">
                 <div class="mb-3">
-                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">5th English Teaching Congress
-                        <br> of the Huetar Norte Region 2025
+                    <h4 class="text-etc-regblue text-uppercase text-center fw-bold">V ENGLISH TEACHING CONGRESS
+                        <br> OF THE NORTHERN HUETAR REGION 2025
                     </h4>
                 </div>
 
@@ -42,10 +42,10 @@
 
                 <div class="text-secondary">
                     <p>Dear Applicant,</p>
-                    <p>We are pleased to announce the official opening of the <strong>Call for Proposals</strong> for the <strong>5th English Teaching Congress 2025</strong>. We invite educators, trainers, and professionals in the field of English language teaching to submit proposals for workshops, presentations, or hands-on sessions that provide practical strategies, promote teacher well-being, and inspire classroom innovation.
+                    <p>We are pleased to announce the official opening of the <strong>Call for Proposals</strong> for the <strong>V English Teaching Congress 2025</strong>. We invite educators, trainers, and professionals in the field of English language teaching to submit proposals for workshops, presentations, or hands-on sessions that provide practical strategies, promote teacher well-being, and inspire classroom innovation.
                         If you have a powerful idea, teaching experience, or classroom strategy that could impact others, we would love to have you as part of this transformative event.
                     </p>
-                    <p>The 5th English Teaching Congress of the Huetar Norte Region 2025 will be held in person and will take place on Thursday, November 27,
+                    <p>The V English Teaching Congress of the Northern Huetar Region 2025 will be held in person and will take place on Thursday, November 27,
                         and Friday, November 28 of the current year, from 8:00 a.m. to 4:00 p.m.</p>
                 </div>
 
@@ -764,11 +764,11 @@
 
                 <div class="ms-4 mt-2 d-flex">
                     <div class="form-check me-4">
-                        <input wire:model="participation_type" class="form-check-input" type="radio" id="participation-presencial" value="Presencial">
+                        <input wire:model="participation_type" class="form-check-input" type="radio" id="participation-presencial" value="On-site">
                         <label class="form-check-label" for="participation-presencial">On-site</label>
                     </div>
                     <div class="form-check">
-                        <input wire:model="participation_type" class="form-check-input" type="radio" id="participation-hibrido" value="Híbrido">
+                        <input wire:model="participation_type" class="form-check-input" type="radio" id="participation-hibrido" value="Hybrid">
                         <label class="form-check-label" for="participation-hibrido">Hybrid</label>
                         <span class="small text-muted"><i><span class="text-danger me-1">*</span>Audience on-site, presenter at a different location</i></span>
                     </div>

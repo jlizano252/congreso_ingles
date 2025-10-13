@@ -24,13 +24,14 @@
                             <th scope="col">Email</th>
                             <th scope="col">Dept.</th>
                             <th scope="col">Joined</th>
+                            <th scope="col">Receipt</th>
                             @if(\Illuminate\Support\Facades\Auth::user()->ide == '113420689')
                             <th></th>
                             @endif
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach( $participants as $participant )
+                        @foreach($participants as $participant)
                         <tr class="hover-actions-trigger">
                             <td class="align-middle text-nowrap">
                                 <div class="d-flex align-items-center">
@@ -43,22 +44,34 @@
                                     </div>
                                 </div>
                             </td>
+
                             <td class="align-middle text-nowrap">{{ $participant->user->email }}</td>
+
                             <td class="align-middle text-nowrap">
-                                @if( $participant->register->mep == 'si')
+                                @if($participant->register->mep == 'si')
                                 <span class="badge badge-soft-success text-uppercase">MEP</span>
                                 @else
                                 <span class="badge badge-soft-info text-uppercase">Private</span>
                                 @endif
                             </td>
-                            {{-- <td class="w-auto">--}}
-                            {{-- <div class="btn-group btn-group hover-actions end-0 me-4">--}}
-                            {{-- <button class="btn btn-light pe-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><span class="fas fa-edit"></span></button>--}}
-                            {{-- <button class="btn btn-light ps-2" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><span class="fas fa-trash-alt"></span></button>--}}
-                            {{-- </div>--}}
-                            {{-- </td>--}}
+
                             <td class="align-middle text-nowrap">{{ \Carbon\Carbon::make($participant->user->created_at)->toDateString() }}</td>
-                            @if( in_array(\Illuminate\Support\Facades\Auth::user()->ide,['113420689','602930599']))
+
+                            {{-- Nueva columna para el comprobante --}}
+                            <td class="align-middle text-center">
+                                @if ($participant->photo)
+                                <a href="{{ asset('storage/' . $participant->photo) }}" target="_blank">
+                                    <img src="{{ asset('storage/' . $participant->photo) }}"
+                                        alt="Payment receipt"
+                                        class="img-thumbnail shadow-sm"
+                                        style="width: 100px; height: 100px; object-fit: contain; border-radius: 6px;">
+                                </a>
+                                @else
+                                <span class="text-muted small fst-italic">No receipt</span>
+                                @endif
+                            </td>
+
+                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide, ['113420689','602930599']))
                             <td>
                                 <div class="d-flex justify-content-end pt-1">
                                     @livewire('admin.users.set-admin-user', ['user' => $participant->user], key($participant->user->ide))
@@ -67,9 +80,10 @@
                             </td>
                             @endif
                         </tr>
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
+
                 @if(count($participants) > 9)
                 <div class="text-secondary d-flex justify-content-end small" style="font-size: .8rem !important;">
                     {{ $participants->links() }}

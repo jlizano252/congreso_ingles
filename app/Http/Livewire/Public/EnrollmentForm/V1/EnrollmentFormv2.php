@@ -147,7 +147,7 @@ class EnrollmentFormv2 extends Component
                 break;
             case 6:
                 $this->validate([
-                    'participation_type' => 'required|in:Presencial,Híbrido'
+                    'participation_type' => 'required|in:On-site,Hybrid'
                 ]);
                 break;
             case 7:

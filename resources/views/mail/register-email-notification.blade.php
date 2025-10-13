@@ -35,7 +35,7 @@
         {{-- <h5 style="text-align: center; font-weight: bold; color: grey; text-transform: uppercase">{{ $user->name .' '. $user->lastname1 .' '. $user->lastname2 }}</h5>--}}
         <h3 class="etc-lightblue" style="font-weight: bold; text-align: center">Successful registration!</h3>
     </div>
-    <h1 class="etc-darkblue" style="font-weight: bold; text-align: center; font-size: 24px; margin-top: 20px; line-height: 1.2">5th English Teaching Congress of the Northern Huetar Region 2025</h1>
+    <h1 class="etc-darkblue" style="font-weight: bold; text-align: center; font-size: 24px; margin-top: 20px; line-height: 1.2">V English Teaching Congress of the Northern Huetar Region 2025</h1>
 
     <h4 class="etc-regblue" style="font-weight: bold; margin-top: 30px; margin-bottom: 10px">Dates and schedules</h4>
 

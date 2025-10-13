@@ -35,16 +35,44 @@
             </div>
 
             <!-- Footer simple -->
-            <footer class="footer mt-4">
-                <div class="row g-0 justify-content-between fs--1">
-                    <div class="col-12 col-sm-auto text-center">
-                        <p class="mb-0 text-500">Sponsored with ❤ by Jenhson Lizano<span class="d-none d-sm-inline-block">|</span><br class="d-sm-none" /> 2025</p>
+            <footer class="footer">
+                <div class="row g-0 justify-content-between align-items-center fs--1 mt-4 mb-3 text-center text-sm-start">
+
+                    <!-- Imagen + texto -->
+                    <div class="col-12 col-sm-auto d-flex flex-column flex-sm-row align-items-center justify-content-center mb-3 mb-sm-0">
+                        <img src="{{ asset('images/committee/jenhson_lizano.jpeg') }}"
+                            alt="Jenhson Lizano"
+                            class="rounded-circle img-fluid me-2 footer-img"
+                            style="width: 80px; height: 80px;">
+
+                        <p class="mb-0 text-500 mt-2 mt-sm-0">
+                            Sponsored with ❤ by <strong>Jenhson Lizano Villalobos - T.I. ETAI Department</strong>
+                            <span class="d-none d-sm-inline-block">|</span><br class="d-sm-none" /> 2025
+                        </p>
                     </div>
-                    <div class="col-12 col-sm-auto text-center">
+
+                    <!-- Versión -->
+                    <div class="col-12 col-sm-auto text-center text-sm-end">
                         <p class="mb-0 text-600">v1.0.0</p>
                     </div>
                 </div>
             </footer>
+            <style>
+                .footer-img {
+                    transition: transform 0.3s ease;
+                }
+
+                .footer-img:hover {
+                    transform: scale(1.8);
+                    z-index: 10;
+                }
+
+                @media (max-width: 576px) {
+                    .footer-img:hover {
+                        transform: scale(1.4);
+                    }
+                }
+            </style>
         </div>
     </main>
 

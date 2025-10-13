@@ -38,7 +38,7 @@ export function initCampusMap(containerId, menuId, imageUrl) {
         { name: "1-6: Classrooms", coords: [668, 928] },
         { name: "7-8: Labs", coords: [668, 756] },
         { name: "9-12: Classrooms", coords: [592, 1398] },
-        { name: "13: Speaker Area", coords: [490, 1376] },
+        { name: "13: Speakers Lounge", coords: [490, 1376] },
         { name: "14: Cafeteria", coords: [352, 858] }
     ];
 
@@ -104,3 +104,20 @@ export function initCampusMap(containerId, menuId, imageUrl) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    const scrollBtn = document.getElementById('scrollToMapBtn');
+    const mapSection = document.querySelector('.campus-map');
+
+    if (scrollBtn && mapSection) {
+        scrollBtn.addEventListener('click', function () {
+            // Si el header es fijo, ajusta el desplazamiento manualmente
+            const headerHeight = 80; // cambia según la altura real del header
+            const offsetTop = mapSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    }
+});

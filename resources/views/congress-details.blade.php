@@ -85,15 +85,33 @@
                 <div class="col-12 col-lg-6 mt-4 mt-lg-0">
                     <h1 class="title text-uppercase"><strong>About us</strong></h1>
 
-                    <p style="line-height: 1.8">The Costa Rican educational system currently finds itself in a fragile state given its unresolved structural problems, which date back to years prior to 2018. Since then, these problems have been aggravated by distinct forces: union strikes, teacher strikes and the pandemic. The State of Education (Program Estado de la Nación, 2021) catalogues this crisis as the worst in the recent decades, branding it an
-                        educational shut down. This emergency has affected all three levels of the Costa Rican educational system: primary, secondary, and diversified.
+                    <p style="line-height: 1.8">Teacher burnout is a global crisis that affects the quality of education and the personal well-being of educators.
+                        According to UNESCO (2023), more than 40% of teachers in Latin America and the Caribbean report high levels of stress and exhaustion,
+                        which negatively impacts their performance in the classroom and their students' motivation. The World Health Organization (WHO, 2019)
+                        recognized burnout as an “occupational syndrome,” characterized by emotional exhaustion, depersonalization, and reduced sense of accomplishment.
                         <br>
-                        As a result of this situation, the weaknesses and needs of the teaching population are not only evident, but are considered a crucial and strategic point in the resurrection of the Costa Rican
-                        educational system.
+                        There are no statistics for Costa Rica, but it is estimated to be more common than previously thought. International studies indicate that at least
+                        8% of depressive disorders are attributable to work-related triggers. "There are certain situations in the workplace that trigger illness.
                     </p>
                 </div>
 
                 <div class="col-12 mt-lg-2">
+                    <p style="line-height: 1.8">
+                        For example,
+                        receiving contradictory orders from bosses over a long period of time, poor relationships with colleagues, or a job with a high level of responsibility.
+                        Doctors, police officers, psychologists, social workers, and teachers may experience more stress that exposes them to burnout," explained psychiatrist
+                        Ingrid Dormond during the 2016 National Medical Congress, where this topic was discussed in depth.</p>
+
+                    <p style="line-height: 1.8"> Teacher empowerment and comprehensive well-being could be key strategies for improving teacher motivation and effectiveness. When teachers feel valued,
+                        empowered, and emotionally balanced, their impact in the classroom could be significantly greater. This would be achieved through the transmission of confidence,
+                        enthusiasm, and commitment, which are essential elements for inspiring students.</p>
+
+                    <p style="line-height: 1.8">This congress seeks to respond to the burnout crisis by providing practical tools that enable teachers to develop self-care and stress management strategies,
+                        incorporate technology to facilitate their work without overloading themselves, learn active methodologies that reduce fatigue and increase motivation,
+                        and build a supportive teaching community to share experiences and solutions.</p>
+
+                    <p style="line-height: 1.8"> With a hands-on approach, this event will allow each participant to implement real solutions from day one, ensuring a lasting impact on their educational practice.</p>
+
                     <p style="line-height: 1.8">Particularly, in what corresponds to language teaching, the Ministry of Public Education, in conjunction with the University of Costa Rica, carried out a linguistic proficiency exam with a sampling of 6,000 primary level students and 73,000 secondary level students. The results show that, despite having an improvement in comparison to the exam executed in 2019, knowledge of the English language is still lower than the expected outcomes according to the level descriptions set forth by the Common European Framework of Reference for Languages, which are implemented in MEP programs . For example, 64% of the students in their last year of public academic secondary school placed in beginning and elementary levels (A1 y A2) .</p>
                     <p style="line-height: 1.8">Due to the educational shutdown, it is fundamental to facilitate academic spaces of knowledge that merge towards creating change through the strengthening of significant and transforming best practices in the field of teaching English as a foreign language. With a holistic and innovative approach, in pursuit of generating meaningful change, the IV English Teaching Congress will address the use of technology, contextualize the educational status of the Huetar Northern Region and remedy the educational lag taking place in local institutions. </p>
                 </div>
@@ -227,27 +245,35 @@
             </div>
         </section> -->
 
-        <section class="footer py-3">
-            <div class="d-flex justify-content-center">
+        <section class="footer bg-dark py-3 text-white">
+            <div class="d-flex justify-content-center mb-3">
                 <img class="img-fluid" style="max-width: 120px;" src="{{ asset('images/ivetc-brand-footer.png') }}" alt="footer-image">
             </div>
-            <p class="text-center text-white small fw-light mb-0"><strong>V CONGRESO DE LA ENSEÑANZA DEL INGLÉS</strong></p>
-            <p class="text-center text-white-50 small fw-normal mb-0">REGIÓN HUETAR NORTE 2025</p>
 
-            <div class="footer-menu text-center my-4 text-white-50">
+            <p class="text-center text-white small fw-light mb-0"><strong>5TH CONGRESS OF ENGLISH TEACHING</strong></p>
+            <p class="text-center text-white-50 small fw-normal mb-3">HUETAR NORTE REGION 2025</p>
+
+            <div class="footer-menu text-center my-3 text-white-50">
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">COMMITTEES</a> |
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">PARTNERS</a> |
                 <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">CONTACTS</a>
             </div>
 
-            <div class=" mb-4">
-                {{-- <div class="d-flex justify-content-center align-items-center">--}}
-                {{-- <img style="max-width: 20px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/facebook.png') }}" alt="facebook">--}}
-                {{-- <img style="max-width: 20px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/instagram.png') }}" alt="facebook">--}}
-                {{-- <img style="max-width: 30px; opacity: .5" class="img-fluid mx-1" src="{{ asset('images/youtube.png') }}" alt="facebook">--}}
-                {{-- </div>--}}
+            <!-- Developer credit con foto -->
+            <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+                <img src="{{ asset('images/committee/jenhson_lizano.jpeg') }}"
+                    alt="Jenhson Lizano"
+                    class="rounded-circle img-fluid"
+                    style="width: 60px; height: 60px; border: 2px solid #ccc; transition: transform 0.3s;"
+                    onmouseover="this.style.transform='scale(3)';"
+                    onmouseout="this.style.transform='scale(1)';">
+                <p class="mb-0 text-white-50 small">Website developed by <strong>Jenhson Lizano Villalobos</strong> T.I. ETAI Department</p>
             </div>
+
+            <!-- Copyright -->
+            <p class="text-center text-white-50 small mt-2 mb-0">&copy; 2025 VETC. All rights reserved.</p>
         </section>
+
         <div class="footer-border"></div>
     </div>
 

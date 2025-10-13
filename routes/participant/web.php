@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // PARTICIPANTS WEB ROUTES...
 
-Route::get('/homeDashboard', [DashboardParticipantController::class, 'index'])->name('home_dashboard');
+Route::get('/', [DashboardParticipantController::class, 'index'])->name('home_dashboard');
 
 // Buscar participante por cédula y mostrar temas
 Route::post('/find', [DashboardParticipantController::class, 'findParticipant'])->name('participant.find');
