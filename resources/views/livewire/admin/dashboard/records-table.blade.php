@@ -25,8 +25,8 @@
                             <th scope="col">Dept.</th>
                             <th scope="col">Joined</th>
                             <th scope="col">Receipt</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->ide == '113420689')
-                            <th></th>
+                            @if(\Illuminate\Support\Facades\Auth::user()->ide == '207860302')
+                            <th>Certificate</th>
                             @endif
                         </tr>
                     </thead>
@@ -71,11 +71,12 @@
                                 @endif
                             </td>
 
-                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide, ['113420689','602930599']))
+                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide, ['207860302']))
                             <td>
-                                <div class="d-flex justify-content-end pt-1">
+                                <div class="d-flex justify-content-end pt-1 align-items-center">
                                     @livewire('admin.users.set-admin-user', ['user' => $participant->user], key($participant->user->ide))
-                                    @livewire('admin.dashboard.generate-certificate', ['participant' => $participant], key($participant->id))
+                                    {{-- Botón para descargar certificado --}}
+                                    @livewire('admin.dashboard.generate-certificate', ['participant' => $participant], key('certificate-'.$participant->id))
                                 </div>
                             </td>
                             @endif

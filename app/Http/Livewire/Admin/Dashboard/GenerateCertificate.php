@@ -10,13 +10,24 @@ class GenerateCertificate extends Component
 {
     public Participant $participant;
 
-    public function generateCertificate() {
-        //
-        $pdfContent = PDF::loadView('pdf.certificate', ['participant'=>$this->participant])->output();
-        return response()->streamDownload(
-            fn () => print($pdfContent),
-            $this->participant->user->ide . "-certificate.pdf"
-        );
+    /**
+     * Generate and download the participant's certificate as PDF
+     */
+    public function generateCertificate()
+    {
+        // Validación rápida
+        if (!$this->participant || !$this->participant->user) {
+            session()->flash('error', 'Participant data not found.');
+            return;
+        }
+
+        // Generar PDF usando la vista formal
+        $pdf = Pdf::loadView('pdf.certificate', [
+            'participant' => $this->participant
+        ]);
+
+        // Descargar PDF con nombre basado en IDE del participante
+        return $pdf->download($this->participant->user->ide . '-certificate.pdf');
     }
 
     public function render()

@@ -31,7 +31,7 @@
 
     <nav id="ivetc-menu" class="ivetc-navbar navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="py-lg-0 navbar-brand text-decoration: none;" href="https://ivetc.centroatenea.network/">
+            <a class="py-lg-0 navbar-brand text-decoration: none;" href="https://vetc.centroatenea.network/">
                 <img src="{{ asset('images/ETC_white.png') }}" class="d-inline-block align-text-top">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

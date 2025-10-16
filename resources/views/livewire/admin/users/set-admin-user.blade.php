@@ -15,9 +15,9 @@
                 <div class="modal-body pb-0">
                     <form wire:submit.prevent="update">
                         <div class="mb-4 row">
-                            <label class="col-4 col-form-label" for="staticEmail">Email</label>
+                            <label class="col-4 col-form-label" for="staticEmail">Ide</label>
                             <div class="col-8">
-                                <input class="form-control-plaintext outline-none" id="staticEmail" type="text" readonly="" value="{{ $user->email }}" />
+                                <input class="form-control-plaintext outline-none" id="staticEmail" type="text" readonly="" value="{{ $user->ide }}" />
                                 <div class="mb-3 row"></div>
                             </div>
                             <label class="col-4 col-form-label" for="inputPassword">Password</label>

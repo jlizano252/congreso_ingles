@@ -960,7 +960,7 @@
             initCampusMap
         } from '/js/campusMap.js';
         document.addEventListener('DOMContentLoaded', () => {
-            initCampusMap('mapContainer', 'hotspotMenu', '/images/map_etai.png');
+            initCampusMap('mapContainer', 'hotspotMenu', '/images/map_etai.jpg');
         });
     </script>
 

@@ -24,7 +24,7 @@ export function initCampusMap(containerId, menuId, imageUrl) {
     container.style.height = "600px"; // Mantener alto fijo o puedes calcular proporcional
 
     // Punto inicial: Entrada principal
-    const startCoords = [779, 73];
+    const startCoords = [820, 287];
     const userMarker = L.circleMarker(startCoords, {
         radius: 10,
         color: "red",
@@ -34,12 +34,12 @@ export function initCampusMap(containerId, menuId, imageUrl) {
 
     // Hotspots (destinos)
     const hotspots = [
-        { name: "1 Auditorium", coords: [790, 1034] },
-        { name: "1-6: Classrooms", coords: [668, 928] },
-        { name: "7-8: Labs", coords: [668, 756] },
-        { name: "9-12: Classrooms", coords: [592, 1398] },
-        { name: "13: Speakers Lounge", coords: [490, 1376] },
-        { name: "14: Cafeteria", coords: [352, 858] }
+        { name: "1 Auditorium", coords: [786, 1273] },
+        { name: "1-6: Classrooms", coords: [734, 1153] },
+        { name: "7-8: Labs", coords: [726, 1080] },
+        { name: "9-12: Classrooms", coords: [668, 1447] },
+        { name: "13: Speakers Lounge", coords: [604, 1461] },
+        { name: "14: Cafeteria", coords: [530, 1161] }
     ];
 
     const menu = document.getElementById(menuId);
@@ -90,7 +90,7 @@ export function initCampusMap(containerId, menuId, imageUrl) {
             i++;
         }, 30);
     }
-    // Opcional: clic en mapa para ver coordenadas
+    //Opcional: clic en mapa para ver coordenadas
     // map.on('click', function (e) {
     //     const lat = e.latlng.lat;
     //     const lng = e.latlng.lng;

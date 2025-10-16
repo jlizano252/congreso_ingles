@@ -15,3 +15,6 @@ Route::get('/dashboard/attendance', function () {
 
 Route::get('/dashboard/attendance/report', [AttendanceDashboard::class, 'downloadReport'])
     ->name('dashboard.attendance.report');
+
+Route::get('/certificate/download/{id}', [DashboardController::class, 'downloadCertificate'])
+    ->name('certificate.download');
