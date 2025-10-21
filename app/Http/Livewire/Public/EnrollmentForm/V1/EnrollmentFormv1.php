@@ -35,6 +35,8 @@ class EnrollmentFormv1 extends Component
     //-- Step-1
     public string $quest1_1 = 'si';
     //-- Step-2
+    public $hasAllergy = '';
+    public $allergyDetails = '';
     public string $selected_ide_type = '1';
     public string $ide = "";
     public string $name = "";
@@ -227,6 +229,7 @@ class EnrollmentFormv1 extends Component
         if ($this->prov == 0 || $this->cant == 0 || $this->dist == 0) {
             $this->prov = $this->cant = $this->dist = null;
         }
+
         return array(
             // user params...
             'ide' => $this->ide,
@@ -244,6 +247,8 @@ class EnrollmentFormv1 extends Component
             // form params...
             'accept' => $this->quest1_1,
             'mep' => $this->mep,
+            'has_allergy' => $this->hasAllergy,
+            'allergy_details' => $this->allergyDetails,
             'appointment_id' => $this->selected_appoint_id,
             'service_years' => $this->service_years,
             'region_id' => $this->selected_region_id,
@@ -255,6 +260,7 @@ class EnrollmentFormv1 extends Component
             'photo' => $this->photo,
         );
     }
+
 
     public function render()
     {

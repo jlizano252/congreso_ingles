@@ -48,16 +48,19 @@
                         <a class="nav-link active" href="#hero-section">Home</a>
                     </li>
                     <li class="nav-item menu-item">
-                        <a class="nav-link" href="documents" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
-                    </li>
-                    <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('webpage.details') }}">Details</a>
                     </li>
-                    <li class="nav-item menu-item mt-4 mt-lg-0">
-                        <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Participant</a>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('expositors.index') }}">Expositors</a>
+                    </li>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('home_dashboard') }}">Book Sessions</a>
                     </li>
                     <li class="nav-item menu-item mt-4 mt-lg-0">
-                        <a href="{{ route('public.postularse.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Applicant</a>
+                        <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Enroll</a>
+                    </li>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('home') }}">Admin</a>
                     </li>
                 </ul>
 
@@ -643,13 +646,19 @@
                 <img class="img-fluid" style="max-width: 120px;" src="{{ asset('images/ivetc-brand-footer.png') }}" alt="footer-image">
             </div>
 
-            <p class="text-center text-white small fw-light mb-0"><strong>5TH CONGRESS OF ENGLISH TEACHING</strong></p>
+            <p class="text-center text-white small fw-light mb-0"><strong>V CONGRESS OF ENGLISH TEACHING</strong></p>
             <p class="text-center text-white-50 small fw-normal mb-3">HUETAR NORTE REGION 2025</p>
 
             <div class="footer-menu text-center my-3 text-white-50">
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">COMMITTEES</a> |
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">PARTNERS</a> |
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">CONTACTS</a>
+                <!-- Link que abre el modal -->
+                <a
+                    style="text-decoration: none"
+                    class="menu-item text-white small mx-2"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactsModal">
+                    CONTACT US
+                </a>
             </div>
 
             <!-- Developer credit con foto -->
@@ -756,6 +765,43 @@
                         <button class="btn info_btn info_btn fw-normal px-5 mt-4" data-bs-dismiss="modal">Close</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="contactsModalLabel">Get in Touch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+
+                    {{-- Contenedor de íconos horizontal --}}
+                    <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
+
+                        {{-- Correo --}}
+                        <a href="mailto:vetc@centroatenea.network" class="contact-icon" style="position: relative; display: inline-block;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                                alt="Correo" style="width:50px; height:auto;">
+                            <span class="tooltip-text">Email</span>
+                        </a>
+
+                        {{-- WhatsApp --}}
+                        <a href="https://wa.me/50663252323" target="_blank" class="contact-icon" style="position: relative; display: inline-block;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                                alt="WhatsApp" style="width:50px; height:auto;">
+                            <span class="tooltip-text">WhatsApp</span>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -964,6 +1010,31 @@
         });
     </script>
 
-</body>
+    {{-- Estilos para los tooltips --}}
+    <style>
+        .contact-icon .tooltip-text {
+            visibility: hidden;
+            width: 80px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            bottom: 60px;
+            /* distancia arriba del icono */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
+        .contact-icon:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</body>
 </html>

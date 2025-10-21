@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="form-check">
-                                <input wire:model.lazy="prefijo" class="form-check-input" type="radio" value="LAC" id="prefijoLAC">
+                                <input wire:model.lazy="prefijo" class="form-check-input" type="radio" value="LIC" id="prefijoLAC">
                                 <label class="form-check-label" for="prefijoLAC">LIC</label>
                             </div>
 
@@ -511,7 +511,7 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-email-pers">E-mail <span class="text-secondary ms-1">(Activo)</span></label>
+                                <label class="mt-1 mb-0" for="user-email-pers">E-mail <span class="text-secondary ms-1">(Active)</span></label>
                             </div>
                             <input wire:model.lazy="email" class="form-control form-control-sm" id="user-email-pers" type="email" placeholder="Enter you email" />
                             @error('email') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror

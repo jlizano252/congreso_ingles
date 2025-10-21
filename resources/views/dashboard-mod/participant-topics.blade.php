@@ -69,10 +69,10 @@
                         @endif
 
                         {{-- Applicant Name --}}
-                        <h5 class="fw-bold mb-1">{{ $applicant->user->name ?? 'Unknown' }} {{ $applicant->user->lastname ?? '' }}</h5>
+                        <h5 class="fw-bold mb-1">{{ $applicant->title ?? 'Untitled Topic' }}</h5>
 
                         {{-- Topic Title --}}
-                        <p class="text-muted mb-2">{{ $applicant->title ?? 'Untitled Topic' }}</p>
+                        <p class="text-muted mb-2">{{ $applicant->user->name ?? 'Unknown' }} {{ $applicant->user->lastname ?? '' }}</p>
 
                         {{-- Available spots --}}
                         <p class="mb-3 text-secondary small">
@@ -84,7 +84,7 @@
                         <div class="d-flex justify-content-center gap-2">
                             <button type="button" class="btn btn-primary fw-bold"
                                 data-bs-toggle="modal" data-bs-target="#aboutApplicantModal{{ $applicant->id }}">
-                                About Applicant
+                                About Expositor
                             </button>
                             <button type="button" class="btn btn-warning fw-bold"
                                 data-bs-toggle="modal" data-bs-target="#aboutTopicModal{{ $applicant->id }}">
@@ -100,7 +100,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded shadow-lg">
                         <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title" id="aboutApplicantLabel{{ $applicant->id }}">About Applicant</h5>
+                            <h5 class="modal-title" id="aboutApplicantLabel{{ $applicant->id }}">About Expositor</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center">
@@ -172,3 +172,5 @@
     });
 </script>
 @endsection
+
+@include('layout.sections.private-foot')

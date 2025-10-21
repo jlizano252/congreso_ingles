@@ -11,16 +11,17 @@ class Participant extends Model
 
     protected $fillable = [
         'user_id',
-        'photo',
         'gender_type',
         'phone',
+        'photo',
         'email',
         'country',
         'province_id',
         'canton_id',
-        'district_id'
+        'district_id',
+        'has_allergy',
+        'allergy_details',
     ];
-
     // Relationships...
     public function user()
     {

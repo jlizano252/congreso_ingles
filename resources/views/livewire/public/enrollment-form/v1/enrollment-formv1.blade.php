@@ -90,7 +90,7 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-ide">IDE Number</label>
+                                <label class="mt-1 mb-0" for="user-ide">ID Number</label>
                             </div>
                             <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your ID number" />
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
@@ -144,7 +144,7 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-lastname">Lastnames</label>
+                                <label class="mt-1 mb-0" for="user-lastname">Last names</label>
                             </div>
                             <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Enter your lastnames" />
                             @error('lastname') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
@@ -490,6 +490,35 @@
                     </div>
                 </div>
 
+                {{-- item --}}
+                <div class="question mt-4">
+                    <div class="d-flex align-items-start">
+                        <div class="me-2">
+                            <img class="img-fluid" src="{{ asset('images/ivetc-point.png') }}" style="max-width: 15px">
+                        </div>
+                        <p class="mb-0">Do you have any dietary considerations we should be aware of?</p>
+                    </div>
+
+                    <div class="ms-4 mt-3 d-flex">
+                        <div class="form-check me-5">
+                            <input wire:model.lazy="hasAllergy" class="form-check-input" id="allergy-yes" type="radio" name="allergy" value="yes" />
+                            <label class="form-check-label" for="allergy-yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input wire:model.lazy="hasAllergy" class="form-check-input" id="allergy-no" type="radio" name="allergy" value="no" />
+                            <label class="form-check-label" for="allergy-no">No</label>
+                        </div>
+                    </div>
+
+                    {{-- Campo de texto condicional --}}
+                    @if($hasAllergy === 'yes')
+                    <div class="ms-4 mt-3">
+                        <label for="allergyDetails" class="form-label">Please describe it:</label>
+                        <textarea wire:model.lazy="allergyDetails" id="allergyDetails" class="form-control" rows="3" placeholder="Describe here..."></textarea>
+                    </div>
+                    @endif
+                </div>
+
                 @endif
 
                 {{-- Step #3 --}}
@@ -681,7 +710,6 @@
                                     <li>Meals (2 coffee breaks and lunch per day)</li>
                                     <li>Materials</li>
                                     <li>Digital certificate</li>
-                                    <li>Souvenirs</li>
                                 </ul>
 
                                 <div class="bg-light p-3 rounded-3">

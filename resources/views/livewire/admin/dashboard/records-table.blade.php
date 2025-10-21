@@ -4,7 +4,7 @@
         <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
                 <a href="{{ route('dashboard.attendance') }}" class="btn btn-primary btn-sm">
-                    <span class="fas fa-check-circle me-1"></span> Asistencia
+                    <span class="fas fa-check-circle me-1"></span> Logbook
                 </a>
                 <div class="d-flex justify-content-end align-items-center">
                     <div class="mx-2">

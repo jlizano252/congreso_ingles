@@ -92,7 +92,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="tab-applicants" data-bs-toggle="tab" href="#content-applicants" role="tab" aria-controls="content-applicants" aria-selected="false">
-                                        Applicants
+                                        Expositors
                                     </a>
                                 </li>
                             </ul>

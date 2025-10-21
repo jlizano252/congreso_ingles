@@ -1,6 +1,6 @@
 @extends('layout.sections.dashboard.participant-layout')
 
-@section('title', 'Registro de Asistencia')
+@section('title', 'Logbook')
 
 @section('content')
     @livewire('admin.dashboard.attendance-dashboard')

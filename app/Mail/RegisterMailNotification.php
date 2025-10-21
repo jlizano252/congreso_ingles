@@ -34,7 +34,7 @@ class RegisterMailNotification extends Mailable implements ShouldQueue
         $user = User::where('ide', $this->params['ide'])->first();
 
         return $this->view('mail.register-email-notification')
-            ->subject( "¡Registro exitoso!")
+            ->subject( "Successful registration!!")
             ->with([ 'params' => $this->params, 'user' => $user ]);
     }
 }

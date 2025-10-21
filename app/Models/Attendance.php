@@ -9,7 +9,7 @@ class Attendance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['applicant_participant_id', 'attended', 'checked_in_at'];
+    protected $fillable = ['applicant_participant_id', 'attended', 'checked_in_at', 'comment'];
 
     protected $casts = [
         'checked_in_at' => 'datetime',

@@ -43,16 +43,19 @@
                         <a class="nav-link" href="{{ route('webpage.index') }}">Home</a>
                     </li>
                     <li class="nav-item menu-item">
-                        <a class="nav-link" href="documents" data-bs-toggle="modal" data-bs-target="#loadingModal">Documents</a>
-                    </li>
-                    <li class="nav-item menu-item">
                         <a class="nav-link active" href="#hero-section">Details</a>
                     </li>
-                    <li class="nav-item menu-item mt-4 mt-lg-0">
-                        <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Register</a>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('expositors.index') }}">Expositors</a>
+                    </li>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('home_dashboard') }}">Book Sessions</a>
                     </li>
                     <li class="nav-item menu-item mt-4 mt-lg-0">
-                        <a href="{{ route('public.postularse.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Applicant</a>
+                        <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Enroll</a>
+                    </li>
+                    <li class="nav-item menu-item">
+                        <a class="nav-link" href="{{ route('home') }}">Admin</a>
                     </li>
                 </ul>
 
@@ -254,9 +257,15 @@
             <p class="text-center text-white-50 small fw-normal mb-3">HUETAR NORTE REGION 2025</p>
 
             <div class="footer-menu text-center my-3 text-white-50">
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">COMMITTEES</a> |
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">PARTNERS</a> |
-                <a style="text-decoration: none" class="menu-item text-white small mx-2" href="">CONTACTS</a>
+                <!-- Link que abre el modal -->
+                <a
+                    style="text-decoration: none"
+                    class="menu-item text-white small mx-2"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#contactsModal">
+                    CONTACTS
+                </a>
             </div>
 
             <!-- Developer credit con foto -->
@@ -384,6 +393,24 @@
                     <div class="d-flex justify-content-end mt-3 mb-3">
                         <button class="btn info_btn info_btn fw-normal px-5 mt-4" data-bs-dismiss="modal">Close</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="contactsModal" tabindex="-1" aria-labelledby="contactsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="contactsModalLabel">Get in Touch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p><strong>Email:</strong> vetc@centroatenea.network</p>
+                    <p><strong>Phone:</strong> +506 6325 2323</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

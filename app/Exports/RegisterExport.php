@@ -25,28 +25,50 @@ class RegisterExport implements FromCollection, WithStrictNullComparison, WithHe
 
     public function collection()
     {
-        $query = DB::table('users as us')
-            ->leftJoin('applicants as ap', 'us.id', '=', 'ap.user_id')
-            ->leftJoin('applicant_forms as af', 'ap.id', '=', 'af.applicant_id')
-            ->selectRaw("
-                us.ide as IDE,
-                CONCAT(UPPER(TRIM(us.name)), ' ', UPPER(TRIM(us.lastname))) as NAME,
-                us.email as EMAIL,
-                af.title as TITLE,
-                af.participation_type as PARTICIPATION,
-                DATE(us.created_at) as JOINED
-            ")
-            ->where('us.admin', 0);
-
+        // 🔹 CASO 1: EXPORT DE PARTICIPANTS
         if ($this->type === 'participants') {
-            // trae solo los que tienen participant (como ya lo tenías)
-            $query->join('participants as pa', 'us.id', '=', 'pa.user_id');
-        } elseif ($this->type === 'applicants') {
-            // trae solo los que tienen applicant (y applicant_forms si existen)
-            $query->whereNotNull('ap.id');
+            return DB::table('users as us')
+                ->join('participants as pa', 'us.id', '=', 'pa.user_id')
+                ->leftJoin('gender_types as gt', 'pa.gender_type', '=', 'gt.id')
+                ->selectRaw("
+                    us.ide as IDE,
+                    CONCAT(UPPER(TRIM(us.name)), ' ', UPPER(TRIM(us.lastname))) as NAME,
+                    us.email as USER_EMAIL,
+                    pa.email as PARTICIPANT_EMAIL,
+                    COALESCE(pa.phone, '') as PHONE,
+                    COALESCE(gt.name, 'N/A') as GENDER,
+                    CASE 
+                        WHEN pa.has_allergy = 1 THEN 'YES' 
+                        WHEN pa.has_allergy = 0 THEN 'NO'
+                        ELSE 'N/A' 
+                    END as DIETARY_CONSIDERATIONS,
+                    COALESCE(pa.allergy_details, '') as DIETARY_DETAILS,
+                    DATE(us.created_at) as JOINED
+                ")
+                ->where('us.admin', 0)
+                ->get();
         }
 
-        return $query->get();
+        // 🔹 CASO 2: EXPORT DE APPLICANTS
+        if ($this->type === 'applicants') {
+            return DB::table('users as us')
+                ->leftJoin('applicants as ap', 'us.id', '=', 'ap.user_id')
+                ->leftJoin('applicant_forms as af', 'ap.id', '=', 'af.applicant_id')
+                ->selectRaw("
+                    us.ide as IDE,
+                    CONCAT(UPPER(TRIM(us.name)), ' ', UPPER(TRIM(us.lastname))) as NAME,
+                    us.email as EMAIL,
+                    af.title as TITLE,
+                    af.participation_type as PARTICIPATION,
+                    DATE(us.created_at) as JOINED
+                ")
+                ->where('us.admin', 0)
+                ->whereNotNull('ap.id')
+                ->get();
+        }
+
+        // fallback (por si acaso)
+        return collect();
     }
 
     public function title(): string
@@ -56,42 +78,51 @@ class RegisterExport implements FromCollection, WithStrictNullComparison, WithHe
 
     public function headings(): array
     {
+        // 🔹 Encabezados de applicants
         if ($this->type === 'applicants') {
             return ["IDE", "NAME", "EMAIL", "TITLE", "PARTICIPATION", "JOINED"];
         }
 
-        return ["IDE", "NAME", "EMAIL", "PHONE", "JOINED"];
+        // 🔹 Encabezados de participants (con nuevos campos)
+        return [
+            "IDE",
+            "NAME",
+            "USER EMAIL",
+            "PARTICIPANT EMAIL",
+            "PHONE",
+            "GENDER",
+            "DIETARY CONSIDERATIONS",
+            "DIETARY DETAILS",
+            "JOINED"
+        ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $default_title = [
+        $headerStyle = [
             'font' => [
                 'bold' => true,
                 'size' => 12,
                 'color' => ['argb' => 'FFFFFF'],
             ],
             'fill' => [
-                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
-                'rotation' => 90,
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                 'color' => ['argb' => '1c780c'],
             ],
             'alignment' => [
-                'horizontal' => Alignment::HORIZONTAL_LEFT,
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+                'vertical' => Alignment::VERTICAL_CENTER,
             ],
         ];
 
-        // aplico estilo a la fila 1 (los encabezados)
         $lastColumn = $sheet->getHighestColumn();
-        $sheet->getStyle("A1:{$lastColumn}1")->applyFromArray($default_title);
-
-        $sheet->getStyle('A')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+        $sheet->getStyle("A1:{$lastColumn}1")->applyFromArray($headerStyle);
     }
 
     public function columnFormats(): array
     {
         return [
-            'A' => NumberFormat::FORMAT_NUMBER
+            'A' => NumberFormat::FORMAT_NUMBER, // IDE
         ];
     }
 }

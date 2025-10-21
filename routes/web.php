@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\PostulationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WebPageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApplicantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +29,4 @@ Route::get('/ui/register/error', [RegisterController::class, 'emailViewError'])-
 
 Route::get('/ui/register/view', [RegisterController::class, 'emailViewTest'])->name('public.email.view');
 
-Route::get('/ui/postularse', [PostulationController::class, 'index'])->name('public.postularse.index');
+Route::get('/expositors', [ApplicantController::class, 'index'])->name('expositors.index');

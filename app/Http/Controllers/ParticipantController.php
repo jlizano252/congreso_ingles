@@ -21,7 +21,9 @@ class ParticipantController extends Controller
                 'country' => $params['country'],
                 'province_id' => $params['province_id'],
                 'canton_id' => $params['canton_id'],
-                'district_id' => $params['district_id']
+                'district_id' => $params['district_id'],
+                'has_allergy' => $params['has_allergy'] ?? null,
+                'allergy_details' => $params['allergy_details'] ?? null,
             ]);
         } catch (\Exception $exception) {
             dd($exception);

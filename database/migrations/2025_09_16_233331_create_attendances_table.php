@@ -11,13 +11,14 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('applicant_participant_id'); // referencia a la tabla pivote
+            $table->unsignedBigInteger('applicant_participant_id');
             $table->boolean('attended')->default(false);
-            $table->timestamp('checked_in_at')->nullable();
+            $table->dateTime('checked_in_at')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
 
             $table->foreign('applicant_participant_id')
@@ -27,12 +28,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('attendances');
     }

@@ -2,13 +2,19 @@
     {{-- Applicants Table --}}
     <div class="card" style="font-size: .9em">
         <div class="card-body pb-0">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- Botón Expositor / Apply alineado a la izquierda -->
+                <a href="{{ route('public.postularse.index') }}" class="btn btn-warning btn-sm">
+                    <span class="fas fa-edit me-1"></span>Expositor
+                </a>
+
+                <!-- Barra de búsqueda y Download alineados a la derecha -->
                 <div class="d-flex justify-content-end align-items-center">
                     <div class="mx-2">
                         <input wire:model="search" class="form-control form-control-sm" type="text" placeholder="Search applicant..." />
                     </div>
 
-                    <button wire:click="export" class="btn btn-falcon-default btn-sm me-1 mb-1" type="button">
+                    <button wire:click="export" class="btn btn-falcon-default btn-sm me-1" type="button">
                         <span class="fas fa-download me-1" data-fa-transform="shrink-3"></span>Download
                     </button>
                 </div>
@@ -71,7 +77,7 @@
 
                             <td class="align-middle text-nowrap">{{ $applicant->email }}</td>
                             <td class="align-middle text-nowrap">
-                                <span class="badge badge-soft-warning text-uppercase fw-semibold">Applicant</span>
+                                <span class="badge badge-soft-warning text-uppercase fw-semibold">Expositor</span>
                             </td>
                             <td class="align-middle text-nowrap">{{ \Carbon\Carbon::make($applicant->created_at)->toFormattedDateString() }}</td>
 
@@ -211,5 +217,4 @@
         }
     </style>
     @endif
-
 </div>

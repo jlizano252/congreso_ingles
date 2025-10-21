@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Applicant;
 use App\Models\User;
+use App\Mail\ParticipantTopicsMail;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardParticipantController extends Controller
 {
@@ -41,7 +43,7 @@ class DashboardParticipantController extends Controller
         return view('dashboard-mod.participant-topics', compact('participant', 'applicants'));
     }
 
-    // 3️⃣ Register topic enrollment
+    // 3️⃣ Register topic enrollment and send email
     public function register(Request $request)
     {
         $participant = Participant::findOrFail($request->participant_id);
@@ -71,9 +73,17 @@ class DashboardParticipantController extends Controller
         }
 
         if (!empty($registered)) {
+            // Register the participant for the selected topics
             $participant->applicants()->syncWithoutDetaching($registered);
+
+            // Retrieve topic details to include in the email
+            $selectedTopics = Applicant::whereIn('id', $registered)->get();
+
+            // Send email to participant
+            Mail::to($participant->user->email)->send(new ParticipantTopicsMail($participant, $selectedTopics));
+
             return redirect()->route('home_dashboard')
-                ->with('message', 'Registration completed successfully');
+                ->with('message', 'Registration completed successfully and email sent!');
         }
 
         return back()->withErrors(['topics' => 'No spots available or already registered for the selected topics']);

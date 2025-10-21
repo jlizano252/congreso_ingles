@@ -27,7 +27,7 @@ class RecordsTable extends Component
     ];
 
     public function export() {
-        return Excel::download(new RegisterExport(), 'Registros-.'.date('Y-m-d h:m:s').'-iv-etc.xlsx');
+        return Excel::download(new RegisterExport(), 'Registros-.'.date('Y-m-d h:m:s').'-v-etc.xlsx');
     }
 
     public function render()

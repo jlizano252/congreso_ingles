@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Applicant extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'ide',
-        'reference',
+        'prefijo', // <-- agregado
         'user_presentation',
         'photo',
         'academic_title',
@@ -29,21 +31,14 @@ class Applicant extends Model
         'teacher_wellbeing' => 'array',
     ];
 
-    // Relación con usuario
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relación con tipo de identificación
     public function ideType()
     {
         return $this->belongsTo(IdeType::class);
-    }
-
-    public function register()
-    {
-        return $this->hasOne(ApplicantForm::class, 'applicant_id', 'id');
     }
 
     public function forms()

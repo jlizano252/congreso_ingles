@@ -11,6 +11,7 @@ class ApplicantForm extends Model
 
     protected $fillable = [
         'applicant_id',
+        'prefijo',
         'user_presentation',
         'photo',
         'academic_title',
@@ -26,6 +27,7 @@ class ApplicantForm extends Model
 
     protected $casts = [
         'selected_audiences' => 'array',
+        'teacher_wellbeing' => 'array',
     ];
 
     public function applicant()

@@ -31,7 +31,7 @@
 
 <div class="container" style="box-shadow: 0 0 5px 0px rgba(0,0,0,0.25); width: 100%; max-width: 600px; background-color: whitesmoke; min-height: 500px; margin: 0 auto; padding: 35px 20px">
     <div>
-        <img src="/images/Acronimo_year.png" alt="vetc" style="max-width: 100px; height: auto; margin: 0 auto; display: block;">
+        <img src="https://vetc.centroatenea.network/images/Acronimo_year.png" alt="vetc" style="max-width: 100px; height: auto; margin: 0 auto; display: block;">
         {{-- <h5 style="text-align: center; font-weight: bold; color: grey; text-transform: uppercase">{{ $user->name .' '. $user->lastname1 .' '. $user->lastname2 }}</h5>--}}
         <h3 class="etc-lightblue" style="font-weight: bold; text-align: center">Successful registration!</h3>
     </div>
@@ -106,13 +106,19 @@
                 <p class="etc-orange" style="text-transform: uppercase; font-weight: bold; font-size: 12px; margin-bottom: 10px">Follow us on social media!</p>
                 <p style="margin:0">
                     <a target="_blank" href="https://www.facebook.com/VETC2025/" style="text-decoration:none; margin: 0 3px">
-                        <img src="/images/facebook.png" width="25" height="25" alt="f" style="display:inline-block;color:#cccccc;opacity: .5">
+                        <img src="https://vetc.centroatenea.network/images/facebook.png" width="25" height="25" alt="f" style="display:inline-block;color:#cccccc;opacity: .5">
                     </a>
                     <a target="_blank" href="https://www.instagram.com/ivenglishteaching/ " style="text-decoration:none; margin: 0 3px">
-                        <img src="/images/instagram.png" width="25" height="25" alt="t" style="display:inline-block;color:#cccccc;opacity: .5">
+                        <img src="https://vetc.centroatenea.network/images/instagram.png" width="25" height="25" alt="t" style="display:inline-block;color:#cccccc;opacity: .5">
                     </a>
                 </p>
             </td>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://vetc.centroatenea.network"
+                    style="display: inline-block; padding: 10px 20px; background-color: #27A8E0; color: white; font-weight: bold; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">
+                    Go to Home Page
+                </a>
+            </div>
         </tr>
     </table>
 
