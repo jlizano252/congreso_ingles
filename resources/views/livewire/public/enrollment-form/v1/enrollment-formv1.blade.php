@@ -92,7 +92,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-ide">ID Number</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your ID number" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your ID number" required/>
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-ide">Passport Number</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Passport number" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Passport number" required/>
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-ide">Residence ID</label>
                             </div>
-                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Residence number" />
+                            <input wire:model.lazy="ide" class="form-control form-control-sm" id="user-ide-type" type="text" placeholder="Enter your Residence number" required/>
                             @error('ide') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-name">Name</label>
                             </div>
-                            <input wire:model.lazy="name" class="form-control form-control-sm" id="user-name" type="text" placeholder="Enter your name" />
+                            <input wire:model.lazy="name" class="form-control form-control-sm" id="user-name" type="text" placeholder="Enter your name" required/>
                             @error('name') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-lastname">Last names</label>
                             </div>
-                            <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Enter your lastnames" />
+                            <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Enter your last names" required/>
                             @error('lastname') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-mobile">Phone number</label>
                             </div>
-                            <input wire:model.lazy="mobile" class="form-control form-control-sm" id="user-mobile" type="text" placeholder="Enter your phone number" />
+                            <input wire:model.lazy="mobile" class="form-control form-control-sm" id="user-mobile" type="text" placeholder="Enter your phone number" required/>
                             @error('mobile') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                             <span class="small text-muted"><i><span class="text-danger me-1">*</span>Format: ####-####</i></span>
                         </div>
@@ -178,7 +178,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-email-pers">Personal Email <span class="text-secondary ms-1">(Active)</span></label>
                             </div>
-                            <input wire:model.lazy="email" class="form-control form-control-sm" id="user-email-pers" type="email" placeholder="Enter your personal email" />
+                            <input wire:model.lazy="email" class="form-control form-control-sm" id="user-email-pers" type="email" placeholder="Enter your personal email" required/>
                             @error('email') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -537,7 +537,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-service-years">Years of service</label>
                             </div>
-                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" />
+                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" required/>
                             @error('service_years') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -555,7 +555,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-institution">Region Name</label>
                             </div>
-                            <input wire:model.lazy="other_region" class="form-control form-control-sm" id="user-custom-region" type="text" placeholder="Enter the region name" />
+                            <input wire:model.lazy="other_region" class="form-control form-control-sm" id="user-custom-region" type="text" placeholder="Enter the region name" required/>
                             @error('other_region') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -570,7 +570,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-institution">Educational institution where you work</label>
                             </div>
-                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the institution name" />
+                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the institution name" required/>
                             @error('institution') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -584,7 +584,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-inst-location">Enter the location of the institution</label>
                             </div>
-                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution" />
+                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution" required/>
                             @error('inst_address') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -603,7 +603,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-service-years">Years of service</label>
                             </div>
-                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" />
+                            <input wire:model.lazy="service_years" class="form-control form-control-sm" id="user-service-years" type="text" placeholder="Enter the number of years" required/>
                             @error('service_years') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -617,7 +617,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-institution">Educational institution where you work</label>
                             </div>
-                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the name of the institution" />
+                            <input wire:model.lazy="institution" class="form-control form-control-sm" id="user-institution" type="text" placeholder="Enter the name of the institution" required/>
                             @error('institution') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -631,7 +631,7 @@
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
                                 <label class="mt-1 mb-0" for="user-inst-location">Enter the location of the institution.</label>
                             </div>
-                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution." />
+                            <input wire:model.lazy="inst_address" class="form-control form-control-sm" id="user-inst-location" type="text" placeholder="Enter the location of the institution." required/>
                             @error('inst_address') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>
@@ -683,7 +683,7 @@
                                 <label class="mt-1 mb-0 fw-semibold" for="user-photo">Attach the image of the payment receipt</label>
                             </div>
 
-                            <input wire:model="photo" class="form-control form-control-sm mt-2" id="user-photo" type="file" accept="image/*" />
+                            <input wire:model="photo" class="form-control form-control-sm mt-2" id="user-photo" type="file" accept="image/*" required/>
 
                             @if ($photo)
                             <div class="mt-3 text-center">

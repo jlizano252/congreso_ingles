@@ -186,7 +186,7 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-lastname">Lastname</label>
+                                <label class="mt-1 mb-0" for="user-lastname">Last names</label>
                             </div>
                             <input wire:model.lazy="lastname" class="form-control form-control-sm" id="user-lastname" type="text" placeholder="Enter your last name(s)" />
                             @error('lastname') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
@@ -619,7 +619,7 @@
                                             <label class="mt-1 mb-0" for="user-photo">Please upload a photo of yourself.</label>
                                         </div>
 
-                                        <input wire:model="photo" class="form-control form-control-sm" id="user-photo" type="file" accept="image/*" />
+                                        <input wire:model="photo" class="form-control form-control-sm" id="user-photo" type="file" accept="image/*" required/>
 
                                         @if ($photo)
                                         <div class="mt-2">

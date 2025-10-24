@@ -24,7 +24,7 @@
     <link href="{{ asset( 'css/theme.min.css' ) }}" rel="stylesheet" id="style-default">
 
     <!--    Document Title-->
-    <title>V-ETC | Admin</title>
+    <title>{{ $pageTitle ?? 'V-ETC | Admin' }}</title>
 
     {{-- Livewire --}}
     @livewireStyles
@@ -33,4 +33,4 @@
 
 <body>
 
-@include('layout.sections.private-preloader')
+    @include('layout.sections.private-preloader')

@@ -149,7 +149,7 @@
         <button type="submit" id="participarBtn" class="btn btn-success mt-3 fw-bold" disabled>Participate</button>
     </form>
     @else
-    <p>No applicants available for this participant.</p>
+    <p>No presenters available for this participant.</p>
     @endif
     @else
     <p>Participant or user not found.</p>

@@ -4,10 +4,11 @@
         <div class="card-body pb-0">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <!-- Botón Expositor / Apply alineado a la izquierda -->
+                @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide,['207860302', '206590313', '208220670']))
                 <a href="{{ route('public.postularse.index') }}" class="btn btn-warning btn-sm">
                     <span class="fas fa-edit me-1"></span>Expositor
                 </a>
-
+                @endif
                 <!-- Barra de búsqueda y Download alineados a la derecha -->
                 <div class="d-flex justify-content-end align-items-center">
                     <div class="mx-2">
@@ -29,9 +30,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Dept.</th>
                             <th scope="col">Joined</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->ide == '113420689')
-                            <th></th>
-                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -80,14 +78,6 @@
                                 <span class="badge badge-soft-warning text-uppercase fw-semibold">Expositor</span>
                             </td>
                             <td class="align-middle text-nowrap">{{ \Carbon\Carbon::make($applicant->created_at)->toFormattedDateString() }}</td>
-
-                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide,['113420689','602930599']))
-                            <td>
-                                <div class="d-flex justify-content-end pt-1">
-                                    @livewire('admin.users.set-admin-user', ['user' => $applicant], key($applicant->ide))
-                                </div>
-                            </td>
-                            @endif
                         </tr>
                         @endforeach
                     </tbody>

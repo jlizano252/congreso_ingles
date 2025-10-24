@@ -1,3 +1,7 @@
+@php
+    $pageTitle = 'V-ETC | Booking Sessions';
+@endphp
+
 @include('layout.sections.private-head')
 @include('layout.sections.messages')
 

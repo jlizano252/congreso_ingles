@@ -71,10 +71,9 @@
                                 @endif
                             </td>
 
-                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide, ['207860302']))
+                            @if(in_array(\Illuminate\Support\Facades\Auth::user()->ide, ['207860302', '206590313', '208220670']))
                             <td>
                                 <div class="d-flex justify-content-end pt-1 align-items-center">
-                                    @livewire('admin.users.set-admin-user', ['user' => $participant->user], key($participant->user->ide))
                                     {{-- Botón para descargar certificado --}}
                                     @livewire('admin.dashboard.generate-certificate', ['participant' => $participant], key('certificate-'.$participant->id))
                                 </div>

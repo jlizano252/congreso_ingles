@@ -12,7 +12,7 @@ class Applicant extends Model
     protected $fillable = [
         'user_id',
         'ide',
-        'prefijo', // <-- agregado
+        'prefijo',
         'user_presentation',
         'photo',
         'academic_title',
