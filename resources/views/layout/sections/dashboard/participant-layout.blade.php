@@ -58,6 +58,12 @@
                 </div>
             </footer>
             <style>
+                footer.footer {
+                    box-shadow: none !important;
+                    background-color: #fff !important;
+                    /* o el color de tu page */
+                }
+
                 .footer-img {
                     transition: transform 0.3s ease;
                 }

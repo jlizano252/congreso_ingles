@@ -213,9 +213,9 @@
                         <div class="">
                             <div class="d-flex align-items-start">
                                 <div class="me-2"><img class="img-fluid" src="{{asset('images/ivetc-point.png')}}" style="max-width: 15px"></div>
-                                <label class="mt-1 mb-0" for="user-exp">Years of Experience</label>
+                                <label class="mt-1 mb-0" for="user-exp">Biography</label>
                             </div>
-                            <input wire:model.lazy="exp" class="form-control form-control-sm" id="user-exp" type="text" placeholder="Enter your titles and/or years of experience" />
+                            <input wire:model.lazy="exp" class="form-control form-control-sm" id="user-exp" type="text" placeholder="Enter a short biography" />
                             @error('exp') <div class="position-relative"><small class="text-danger" style="font-size: .8em">{{ $message }}</small></div> @enderror
                         </div>
                     </div>

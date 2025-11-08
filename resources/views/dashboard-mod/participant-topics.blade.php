@@ -110,8 +110,8 @@
                             <i class="fas fa-user-circle fa-4x text-secondary mb-3"></i>
                             @endif
                             <h5 class="fw-bold mb-2">{{ $applicant->user->name ?? 'Unknown' }} {{ $applicant->user->lastname ?? '' }}</h5>
-                            <p><strong>Academic Title:</strong> {{ $form->academic_title ?? 'N/A' }}</p>
-                            <p><strong>Experience:</strong> {{ $form->exp ? $form->exp . ' years' : 'N/A' }}</p>
+                            <p><strong>Academic Title:</strong> {{ optional($form)->academic_title ?? 'N/A' }}</p>
+                            <p><strong>Biography:</strong> {{ optional($form)->exp ? optional($form)->exp . ' years' : 'N/A' }}</p>
                         </div>
                     </div>
                 </div>
@@ -172,5 +172,3 @@
     });
 </script>
 @endsection
-
-@include('layout.sections.private-foot')

@@ -28,15 +28,15 @@
 
                 {{-- Grid de expositores --}}
                 <div class="row g-4">
-                    @forelse($expositors as $expositor)
+                    @forelse($expositors as $user)
                     @php
-                    $applicant = $expositor->applicant ?? null;
-                    $user = $applicant->user ?? null;
+                    $applicant = $user->applicant ?? null;
                     @endphp
+
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="expositor-card text-center p-4 shadow-sm h-100 border-0">
-                            @if($expositor->photo)
-                            <img src="{{ asset('storage/' . $expositor->photo) }}" alt="{{ $user->name ?? 'Unknown' }}" class="rounded-circle mb-3 border border-3" style="width: 100px; height: 100px; object-fit: cover; border-color: var(--congreso-azul);">
+                            @if($applicant && $applicant->photo)
+                            <img src="{{ asset('storage/' . $applicant->photo) }}" alt="{{ $user->name }}" class="rounded-circle mb-3 border border-3" style="width: 100px; height: 100px; object-fit: cover; border-color: var(--congreso-azul);">
                             @else
                             <i class="fas fa-user-circle fa-5x text-secondary mb-3"></i>
                             @endif
@@ -45,10 +45,10 @@
                                 {{ $applicant->prefijo ?? '-' }}. {{ $user->name ?? 'Unknown' }} {{ $user->lastname ?? '' }}
                             </h5>
 
-                            <span class="expositor-badge">{{ $expositor->academic_title ?? '—' }}</span>
+                            <span class="expositor-badge">{{ $applicant->academic_title ?? '—' }}</span>
 
                             <p class="mb-0 text-muted"><strong>Email:</strong> {{ $user->email ?? '-' }}</p>
-                            <p class="mb-0 text-muted"><strong>Experience:</strong> {{ $expositor->exp ? $expositor->exp . ' year(s)' : '-' }}</p>
+                            <p class="mb-0 text-muted"><strong>Biography:</strong> {{ $applicant->exp ?? '-' }}</p>
                         </div>
                     </div>
                     @empty

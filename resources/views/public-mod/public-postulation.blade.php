@@ -25,7 +25,7 @@
         </div> --}}
 
         <div class="col-12 col-lg-8 col-xxl-8 pb-3">
-            @livewire('public.enrollment-form.v1.enrollment-formv2')
+            @livewire('public.enrollment-form.v1.enrollment-formv2', ['user_id' => request('user_id')])
         </div>
 
     </div>
