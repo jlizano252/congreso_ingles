@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Selected Topics</title>
+    <title>Registered Sessions</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -25,7 +25,6 @@
 
         .header {
             background-color: #0d6efd;
-            /* Congreso blue */
             color: white;
             padding: 20px;
             text-align: center;
@@ -45,31 +44,36 @@
             margin-bottom: 20px;
         }
 
-        .topic-card {
+        .session-card {
             border: 1px solid #ddd;
             border-left: 5px solid #f57c00;
-            /* Congreso orange */
             border-radius: 5px;
             padding: 15px;
             margin-bottom: 15px;
             background-color: #fafafa;
         }
 
-        .topic-title {
+        .session-title {
             font-weight: bold;
             color: #0d6efd;
             margin-bottom: 5px;
         }
 
-        .topic-expositor {
+        .session-expositor {
             font-style: italic;
             color: #555;
             margin-bottom: 10px;
         }
 
-        .topic-abstract {
+        .session-abstract {
             font-size: 0.9rem;
             color: #333;
+        }
+
+        .session-info {
+            font-size: 0.85rem;
+            color: #333;
+            margin-top: 5px;
         }
 
         .footer {
@@ -98,40 +102,49 @@
         <div class="header">
             <h1>V English Teaching Congress 2025</h1>
         </div>
+
         <div class="content">
             <p class="greeting">Hello {{ $participant->user->name }},</p>
-            <p>Thank you for registering! You have successfully enrolled in the following topics:</p>
+            <p>Thank you for registering! You have successfully enrolled in the following sessions:</p>
 
-            @foreach($topics as $topic)
-            <div class="topic-card">
-                <div class="topic-title">{{ $topic->title ?? 'Untitled Topic' }}</div>
-                <div class="topic-expositor">{{ $topic->user->name ?? 'Unknown' }} {{ $topic->user->lastname ?? '' }}</div>
-                <div class="topic-abstract">{{ $topic->abstract ?? 'No abstract provided.' }}</div>
+            @foreach($sessions as $session)
+            <div class="session-card">
+                <div class="session-title">{{ $session->applicantForm->title ?? 'Untitled Session' }}</div>
+                <div class="session-expositor">
+                    {{ $session->applicantForm->applicant->user->name ?? 'Unknown' }}
+                    {{ $session->applicantForm->applicant->user->lastname ?? '' }}
+                </div>
+                <div class="session-abstract">{{ $session->applicantForm->abstract ?? 'No abstract provided.' }}</div>
+                <div class="session-info">
+                    <strong>Date & Time:</strong> {{ \Carbon\Carbon::parse($session->date)->format('d/m/Y') }}
+                    {{ \Carbon\Carbon::parse($session->start_time)->format('H:i') }} -
+                    {{ \Carbon\Carbon::parse($session->end_time)->format('H:i') }}<br>
+                    <strong>Room:</strong> {{ $session->room->name ?? 'Unknown' }}
+                </div>
             </div>
             @endforeach
 
-            <table style="width:100%;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:12px;line-height:22px;color:#363636;margin-top: 20px">
+            <table style="width:100%;border:none;border-spacing:0;text-align:center;font-family:Arial,sans-serif;font-size:12px;line-height:22px;color:#363636;margin-top: 20px">
                 <tr>
-                    <td style="text-align:center;font-size:11px;">
-                        <p class="etc-orange" style="text-transform: uppercase; font-weight: bold; font-size: 12px; margin-bottom: 10px">Follow us on social media!</p>
-                        <p style="margin:0">
-                            <a target="_blank" href="https://www.facebook.com/VETC2025/" style="text-decoration:none; margin: 0 3px">
-                                <img src="https://vetc.centroatenea.network/images/facebook.png" width="25" height="25" alt="f" style="display:inline-block;color:#cccccc;opacity: .5">
-                            </a>
-                            <a target="_blank" href="https://www.instagram.com/ivenglishteaching/ " style="text-decoration:none; margin: 0 3px">
-                                <img src="https://vetc.centroatenea.network/images/instagram.png" width="25" height="25" alt="t" style="display:inline-block;color:#cccccc;opacity: .5">
-                            </a>
-                        </p>
+                    <td>
+                        <p style="text-transform: uppercase; font-weight: bold; font-size: 12px; margin-bottom: 10px">Follow us on social media!</p>
+                        <a target="_blank" href="https://www.facebook.com/VETC2025/">
+                            <img src="https://vetc.centroatenea.network/images/facebook.png" width="25" height="25" alt="Facebook">
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/ivenglishteaching/">
+                            <img src="https://vetc.centroatenea.network/images/instagram.png" width="25" height="25" alt="Instagram">
+                        </a>
                     </td>
                 </tr>
             </table>
+
             <p>If you have any questions, feel free to <a href="mailto:vetc@centroatenea.network" class="button">Get in Touch</a></p>
         </div>
+
         <div class="footer">
             &copy; 2025 V English Teaching Congress. All rights reserved.
         </div>
     </div>
-
 </body>
 
 </html>

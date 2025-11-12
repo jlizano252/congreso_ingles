@@ -11,17 +11,17 @@ class ParticipantTopicsMail extends Mailable
     use Queueable, SerializesModels;
 
     public $participant;
-    public $topics;
+    public $sessions;
 
-    public function __construct($participant, $topics)
+    public function __construct($participant, $sessions)
     {
         $this->participant = $participant;
-        $this->topics = $topics;
+        $this->sessions = $sessions;
     }
 
     public function build()
     {
-        return $this->subject('Your Selected Topics')
-            ->view('mail.participant-topics');
+        return $this->subject('Your Registered Sessions - V-ETC 2025')
+                    ->view('mail.participant-topics'); // Blade del correo
     }
 }

@@ -9,14 +9,14 @@ class Attendance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['applicant_participant_id', 'attended', 'checked_in_at', 'comment'];
+    protected $fillable = ['session_participant_id', 'attended', 'checked_in_at', 'comment'];
 
     protected $casts = [
         'checked_in_at' => 'datetime',
     ];
 
-    public function applicantParticipant()
+    public function sessionParticipant()
     {
-        return $this->belongsTo(ApplicantParticipant::class);
+        return $this->belongsTo(SessionParticipant::class);
     }
 }

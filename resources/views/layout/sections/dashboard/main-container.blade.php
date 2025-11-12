@@ -90,9 +90,14 @@
                                         Participants
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mb-2">
                                     <a class="nav-link" id="tab-applicants" data-bs-toggle="tab" href="#content-applicants" role="tab" aria-controls="content-applicants" aria-selected="false">
                                         Expositors
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-topics" data-bs-toggle="tab" href="#content-topics" role="tab" aria-controls="content-topics" aria-selected="false">
+                                        Topics
                                     </a>
                                 </li>
                             </ul>
@@ -101,6 +106,7 @@
 
                         <div class="col-12 col-lg-10">
                             <div class="tab-content" id="pill-myTabContent">
+
                                 {{-- Tab Participants --}}
                                 <div class="tab-pane fade show active" id="content-participants" role="tabpanel" aria-labelledby="tab-participants">
                                     @livewire('admin.dashboard.records-table')
@@ -110,11 +116,18 @@
                                 <div class="tab-pane fade" id="content-applicants" role="tabpanel" aria-labelledby="tab-applicants">
                                     @livewire('admin.dashboard.applicants-table')
                                 </div>
+
+                                {{-- Tab Topics --}}
+                                <div class="tab-pane fade" id="content-topics" role="tabpanel" aria-labelledby="tab-topics">
+                                    @livewire('admin.dashboard.assign-topic-session')
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </main>

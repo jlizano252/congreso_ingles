@@ -37,4 +37,9 @@ class Participant extends Model
     {
         return $this->belongsToMany(Applicant::class, 'applicant_participant');
     }
+
+    public function sessions()
+    {
+        return $this->belongsToMany(Session::class, 'session_participant');
+    }
 }

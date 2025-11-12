@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceReportController;
 use App\Http\Controllers\PostulationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Admin\Dashboard\AttendanceDashboard;
@@ -21,3 +22,6 @@ Route::get('/certificate/download/{id}', [DashboardController::class, 'downloadC
     ->name('certificate.download');
 
 Route::get('/postularse', [PostulationController::class, 'index'])->name('public.postularse.index');
+
+Route::get('/dashboard/attendance/report', [AttendanceReportController::class, 'download'])
+    ->name('dashboard.attendance.report');

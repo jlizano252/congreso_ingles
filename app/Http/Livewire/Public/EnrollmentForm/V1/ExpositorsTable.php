@@ -20,7 +20,7 @@ class ExpositorsTable extends Component
                 $query->where('name', 'like', "%{$this->search}%")
                     ->orWhere('lastname', 'like', "%{$this->search}%")
                     ->orWhere('email', 'like', "%{$this->search}%")
-                    ->orWhereHas('applicants', function ($q) {
+                    ->orWhereHas('applicant', function ($q) {
                         $q->where('academic_title', 'like', "%{$this->search}%")
                             ->orWhere('exp', 'like', "%{$this->search}%")
                             ->orWhere('prefijo', 'like', "%{$this->search}%");

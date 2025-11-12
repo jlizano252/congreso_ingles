@@ -23,31 +23,28 @@
                     <tr>
                         <th>#</th>
                         <th>Participant</th>
-                        <th>Topic</th>
+                        <th>Session</th>
                         <th>Presenter</th>
                         <th>Attendance</th>
                         <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($applicantParticipants as $ap)
-                    @php $attendance = $ap->attendances->first(); @endphp
+                    @forelse($sessionParticipants as $sp)
+                    @php $attendance = $sp->attendances->first(); @endphp
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $ap->participant->user->name }} {{ $ap->participant->user->lastname }}</td>
-                        <td>{{ $ap->applicant->title ?? $ap->applicant->name }}</td>
-                        <td>{{ $ap->applicant->user->name }} {{ $ap->applicant->user->lastname }}</td>
+                        <td>{{ $sp->participant->user->name }} {{ $sp->participant->user->lastname }}</td>
+                        <td>{{ $sp->session->applicantForm->title ?? '-' }}</td>
+                        <td>{{ $sp->session->applicantForm->applicant->user->name }} {{ $sp->session->applicantForm->applicant->user->lastname }}</td>
                         <td>
-                            <button
-                                wire:click="markAsAttended({{ $ap->id }})"
+                            <button wire:click="markAsAttended({{ $sp->id }})"
                                 class="btn btn-sm fw-bold {{ $attendance?->attended ? 'btn-success' : 'btn-primary' }}"
                                 @if($attendance?->attended) disabled @endif>
                                 {{ $attendance?->attended ? 'Attended' : 'Mark Attendance' }}
                             </button>
                         </td>
-                        <td>
-                            {{ $attendance?->checked_in_at?->format('d/m/Y') ?? '-' }}
-                        </td>
+                        <td>{{ $attendance?->checked_in_at?->format('d/m/Y') ?? '-' }}</td>
                     </tr>
                     @empty
                     <tr>
