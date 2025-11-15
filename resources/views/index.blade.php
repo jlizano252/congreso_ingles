@@ -688,78 +688,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-uppercase mb-4 mt-2 text-warning text-center"><strong>Calendar</strong></h3>
-                    <table class="table table-hover calendar-table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Day</th>
-                                <th scope="col">Modality</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <h1 class="text-primary">1</h1>
-                                </th>
-                                <td>
-                                    <ul class="mb-0 ps-0" style="list-style: none">
-                                        <li>On-site</li>
-                                    </ul>
-                                </td>
-                                <td class="table-info">
-                                    <ul class="mb-0 ps-0" style="list-style: none">
-                                        <li class="border-dashed">27/11/2025 (8:00 a.m. to 4:00 p.m.)</li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            8:00 a.m. a 9:00 a.m. <span class="font-semibold text-blue-600">(Opening)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            9:30 a.m. a 12:00 p.m. <span class="font-semibold text-blue-600">(Academic Block 1*)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            12:00 p.m. a 1:00 p.m. <span class="font-semibold text-blue-600">(Lunch)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            1:00 p.m. a 3:30 p.m. <span class="font-semibold text-blue-600">(Academic Block 2*)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            3:30 p.m. a 4:00 p.m. <span class="font-semibold text-blue-600">(Coffee Break)</span>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <h1 class="text-warning">2</h1>
-                                </th>
-                                <td>
-                                    <ul class="mb-0 ps-0" style="list-style: none">
-                                        <li>On-site</li>
-                                    </ul>
-                                </td>
-                                <td class="table-info">
-                                    <ul class="mb-0 ps-0" style="list-style: none">
-                                        <li class="border-dashed">28/11/2025 (8:00 a.m. to 4:00 p.m.)</li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            8:00 a.m. a 9:00 a.m. <span class="font-semibold text-blue-600">(Opening)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            9:30 a.m. a 12:00 p.m. <span class="font-semibold text-blue-600">(Academic Block 3*)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            12:00 p.m. a 1:00 p.m. <span class="font-semibold text-blue-600">(Lunch)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            1:00 p.m. a 3:30 p.m. <span class="font-semibold text-blue-600">(Academic Block 4*)</span>
-                                        </li>
-                                        <li class="p-3 bg-gray-100 rounded-lg hover:bg-blue-100 transition">
-                                            3:30 p.m. a 4:00 p.m. <span class="font-semibold text-blue-600">(Coffee Break)</span>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <img src="{{ asset('images/cronograma-vetc.jpeg') }}" alt="VETC 2025 Schedule" class="img-fluid rounded shadow" />
 
                     <div class="d-flex justify-content-end mt-3 mb-3">
                         <button class="btn info_btn info_btn fw-normal px-5 mt-4" data-bs-dismiss="modal">Close</button>
@@ -1037,4 +966,5 @@
         }
     </style>
 </body>
+
 </html>

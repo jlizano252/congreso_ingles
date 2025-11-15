@@ -95,11 +95,22 @@
                                         Expositors
                                     </a>
                                 </li>
+                                @php
+                                $user = \Illuminate\Support\Facades\Auth::user();
+                                @endphp
+
+                                @if($user->ide === '207860302')
                                 <li class="nav-item">
                                     <a class="nav-link" id="tab-topics" data-bs-toggle="tab" href="#content-topics" role="tab" aria-controls="content-topics" aria-selected="false">
                                         Topics
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab-general-users" data-bs-toggle="tab" href="#content-general-users" role="tab" aria-controls="content-general-users" aria-selected="false">
+                                        Users-Applicant
+                                    </a>
+                                </li>
+                                @endif
                             </ul>
 
                         </div>
@@ -122,6 +133,10 @@
                                     @livewire('admin.dashboard.assign-topic-session')
                                 </div>
 
+                                {{-- All Users --}}
+                                <div class="tab-pane fade" id="content-general-users" role="tabpanel" aria-labelledby="tab-users">
+                                    @livewire('admin.dashboard.general-users-table')
+                                </div>
                             </div>
                         </div>
                     </div>

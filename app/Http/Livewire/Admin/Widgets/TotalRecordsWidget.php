@@ -10,13 +10,13 @@ class TotalRecordsWidget extends Component
 {
     public function render()
     {
-        // Usuarios totales excluyendo admins
-        $count = User::where('admin', 0)->count();
+        // Usuarios que tienen al menos un applicant
+        $count = User::whereHas('applicant')->count();
 
-        // Usuarios creados hoy excluyendo admins
-        $today_count = User::where('admin', 0)
-            ->whereDate('created_at', Carbon::today())
-            ->count();
+        // Usuarios que tienen applicants creados hoy
+        $today_count = User::whereHas('applicant', function ($q) {
+            $q->whereDate('created_at', Carbon::today());
+        })->count();
 
         return view('livewire.admin.widgets.total-records-widget', [
             'count' => $count,
