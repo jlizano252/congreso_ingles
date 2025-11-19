@@ -96,12 +96,15 @@ class DashboardParticipantController extends Controller
 
             $selectedSessions = Session::whereIn('id', $registered)->get()->load(['applicantForm', 'applicantForm.applicant.user', 'room']);
 
+            static $delay = 0;
+
             Mail::to($participant->user->email)
                 ->later(
-                    now()->addSeconds(5),
+                    now()->addSeconds($delay),
                     new ParticipantTopicsMail($participant, $selectedSessions)
                 );
 
+            $delay += 10;
             return back()->with('message', 'Registration completed successfully!');
         }
 
