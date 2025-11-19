@@ -3,10 +3,11 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue; // ← IMPORTANTE
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ParticipantTopicsMail extends Mailable
+class ParticipantTopicsMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -22,6 +23,6 @@ class ParticipantTopicsMail extends Mailable
     public function build()
     {
         return $this->subject('Your Registered Sessions - V-ETC 2025')
-                    ->view('mail.participant-topics'); // Blade del correo
+            ->view('mail.participant-topics');
     }
 }

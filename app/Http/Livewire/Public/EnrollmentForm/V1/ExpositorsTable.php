@@ -12,19 +12,20 @@ class ExpositorsTable extends Component
     public function render()
     {
         $expositors = \App\Models\User::query()
-            ->whereHas('applicant.forms') // usuarios que tengan al menos un form
-            ->with(['applicant' => function ($q) {
-                $q->with('forms'); // cargamos forms de cada applicant
-            }])
+            ->whereHas('applicant.forms') // solo expositores reales
+            ->with(['applicant.forms'])
             ->when($this->search, function ($query) {
-                $query->where('name', 'like', "%{$this->search}%")
-                    ->orWhere('lastname', 'like', "%{$this->search}%")
-                    ->orWhere('email', 'like', "%{$this->search}%")
-                    ->orWhereHas('applicant', function ($q) {
-                        $q->where('academic_title', 'like', "%{$this->search}%")
-                            ->orWhere('exp', 'like', "%{$this->search}%")
-                            ->orWhere('prefijo', 'like', "%{$this->search}%");
-                    });
+                $search = "%{$this->search}%";
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', $search)
+                        ->orWhere('lastname', 'like', $search)
+                        ->orWhere('email', 'like', $search)
+                        ->orWhereHas('applicant', function ($q2) use ($search) {
+                            $q2->where('academic_title', 'like', $search)
+                                ->orWhere('exp', 'like', $search)
+                                ->orWhere('prefijo', 'like', $search);
+                        });
+                });
             })
             ->get();
 
