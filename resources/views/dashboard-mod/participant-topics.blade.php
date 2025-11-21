@@ -245,7 +245,7 @@
         </div>
     </form>
     @else
-    <p class="text-center">No sessions available for this participant.</p>
+    <p class="text-center">No sessions available yet.</p>
     @endif
     @else
     <p class="text-center">Participant not found.</p>
