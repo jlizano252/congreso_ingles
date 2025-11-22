@@ -146,6 +146,11 @@
                                     {{ $applicantForm['applicant']['user']['lastname'] ?? '' }}
                                 </p>
 
+                                {{-- Participation type --}}
+                                <p class="small-info text-primary mb-2">
+                                    <strong>Modality:</strong> {{ $applicantForm['participation_type'] ?? 'N/A' }}
+                                </p>
+
                                 {{-- Spots --}}
                                 <p class="mb-2 text-secondary small-info">
                                     <i class="fas fa-user-friends me-1"></i>

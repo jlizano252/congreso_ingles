@@ -9,36 +9,49 @@ class SessionParticipant extends Model
 {
     use HasFactory;
 
-    protected $table = 'session_participant'; // 👈 Tu tabla actual
+    protected $table = 'session_participant';
     protected $fillable = ['session_id', 'participant_id'];
 
-    // Relación con Session
+    // Cada fila pertenece a una sesión
     public function session()
     {
         return $this->belongsTo(Session::class);
     }
 
-    // Relación con Participant
+    // Cada fila pertenece a un participante
     public function participant()
     {
         return $this->belongsTo(Participant::class);
     }
 
-    // Relación con Attendance (asistencia)
+    // Relación con Attendance
     public function attendances()
     {
         return $this->hasMany(Attendance::class, 'session_participant_id');
     }
 
-    public function applicant()
+    /**
+     * Obtener el Applicant (presentador) navegando por:
+     * session → applicantForm → applicant
+     */
+    public function presenter()
     {
-        return $this->hasOneThrough(
-            Applicant::class,
-            ApplicantForm::class,
-            'id',               // Foreign key en ApplicantForm
-            'id',               // Foreign key en Applicant
-            'session_id',       // Local key en SessionParticipant
-            'applicant_id'      // Local key en ApplicantForm
-        );
+        return $this->session?->applicantForm?->applicant ?? null;
+    }
+
+    /**
+     * Obtener el usuario del presentador
+     */
+    public function presenterUser()
+    {
+        return $this->presenter()?->user ?? null;
+    }
+
+    /**
+     * Obtener el tema (topic)
+     */
+    public function topic()
+    {
+        return $this->session?->applicantForm?->title ?? null;
     }
 }
