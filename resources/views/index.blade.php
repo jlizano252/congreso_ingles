@@ -56,9 +56,9 @@
                     <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('home_dashboard') }}">Book Sessions</a>
                     </li>
-                    <li class="nav-item menu-item mt-4 mt-lg-0">
+                    <!-- <li class="nav-item menu-item mt-4 mt-lg-0">
                         <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Enroll</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('home') }}">Admin</a>
                     </li>

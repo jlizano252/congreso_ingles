@@ -49,12 +49,18 @@ class DashboardParticipantController extends Controller
             ->get();
 
         $sessionsByDate = $sessions->map(function ($session) use ($participant) {
+
             $alreadyRegistered = $session->participants->contains($participant->id);
             $available = $session->capacity - $session->participants->count();
+
+            // CALCULAR BLOQUE
+            $block = $this->getBlock($session->date, $session->start_time);
 
             return array_merge($session->toArray(), [
                 'already_registered' => $alreadyRegistered,
                 'available_spots' => $available,
+                'block' => $block['number'],
+                'block_time' => $block['time'],
             ]);
         })->groupBy(function ($s) {
             return \Carbon\Carbon::parse($s['date'])->format('l, F jS');
@@ -109,5 +115,26 @@ class DashboardParticipantController extends Controller
         }
 
         return back()->withErrors(['sessions' => 'No spots available or already registered']);
+    }
+
+    private function getBlock($date, $startTime)
+    {
+        $dateFormatted = \Carbon\Carbon::parse($date)->format('Y-m-d');
+        $start = \Carbon\Carbon::parse($startTime);
+
+        // BLOQUES DEL 27 DE NOVIEMBRE
+        if ($dateFormatted === '2025-11-27') {
+            if ($start->between('09:15', '10:40')) return ['number' => 1, 'time' => '09:15 – 10:40'];
+            if ($start->between('11:00', '12:30')) return ['number' => 2, 'time' => '11:00 – 12:30'];
+            if ($start->between('14:00', '15:30')) return ['number' => 3, 'time' => '14:00 – 15:30'];
+        }
+
+        // BLOQUES DEL 28 DE NOVIEMBRE
+        if ($dateFormatted === '2025-11-28') {
+            if ($start->between('09:15', '10:40')) return ['number' => 1, 'time' => '09:15 – 10:40'];
+            if ($start->between('11:00', '12:30')) return ['number' => 2, 'time' => '11:00 – 12:30'];
+        }
+
+        return ['number' => null, 'time' => null];
     }
 }
