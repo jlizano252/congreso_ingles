@@ -54,6 +54,8 @@
                 </tbody>
             </table>
 
+            {{ $sessionParticipants->links() }}
+
             <!-- Download report button -->
             <div class="d-flex justify-content-end mt-3">
                 <a href="{{ route('dashboard.attendance.report') }}" class="btn btn-secondary fw-bold">
