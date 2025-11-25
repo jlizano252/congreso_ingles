@@ -175,8 +175,8 @@ class DatabaseSeeder extends Seeder
                 'ide' => '118470725',
                 'ide_type' => 1,
                 'admin' => 1,
-                'name' => 'David Jesús',
-                'lastname' => 'Gutiérrez Guzmán',
+                'name' => 'David Jesus',
+                'lastname' => 'Gutierrez Guzman',
                 'password' => Hash::make('VETC2025'),
             ]
         );
@@ -187,12 +187,12 @@ class DatabaseSeeder extends Seeder
                 'ide_type' => 1,
                 'admin' => 1,
                 'name' => 'Sherry',
-                'lastname' => 'Borbón Andrade',
+                'lastname' => 'Borbon Andrade',
                 'password' => Hash::make('VETC2025'),
             ]
         );
         User::firstOrCreate(
-            ['email' => 'Camilanayu27@gmail.com'],
+            ['email' => 'camilanayu27@gmail.com'],
             [
                 'ide' => '118890348',
                 'ide_type' => 1,
@@ -209,7 +209,7 @@ class DatabaseSeeder extends Seeder
                 'ide_type' => 1,
                 'admin' => 1,
                 'name' => 'Samira',
-                'lastname' => 'Sancho Chacón',
+                'lastname' => 'Sancho Chacon',
                 'password' => Hash::make('VETC2025'),
             ]
         );
@@ -220,7 +220,7 @@ class DatabaseSeeder extends Seeder
                 'ide_type' => 1,
                 'admin' => 1,
                 'name' => 'Ariel',
-                'lastname' => 'Martínez Silva',
+                'lastname' => 'Martinez Silva',
                 'password' => Hash::make('VETC2025'),
             ]
         );
