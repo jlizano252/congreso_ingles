@@ -136,5 +136,115 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('VETC2025'),
             ]
         );
+        User::firstOrCreate(
+            ['email' => 'esteban12320soldel@gmail.com'],
+            [
+                'ide' => '119760505',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Andres',
+                'lastname' => 'Solano Delgado',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'yeustinacuna@gmail.com'],
+            [
+                'ide' => '208710654',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Yeustin Antony',
+                'lastname' => 'Mairena Acuña',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'jesusbrenes31@gmail.com'],
+            [
+                'ide' => '119740895',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Christian',
+                'lastname' => 'Brenes Vega',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'daniela.segura.calvo@est.una.ac.cr'],
+            [
+                'ide' => '208250830',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Daniela Ivannia',
+                'lastname' => 'Segura Calvo',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'david.gutierrez.guzman@est.una.ac.cr'],
+            [
+                'ide' => '118470725',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'David Jesús',
+                'lastname' => 'Gutiérrez Guzmán',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'sherry.borbon.andrade@est.una.ac.cr'],
+            [
+                'ide' => '402720047',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Sherry',
+                'lastname' => 'Borbón Andrade',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'camilanayu27@gmail.com'],
+            [
+                'ide' => '118890348',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Camila Nayudel',
+                'lastname' => 'Santana Villalobos',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'ssancho@estudiantes.tec.cr'],
+            [
+                'ide' => '2022065510',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Samira',
+                'lastname' => 'Sancho Chacón',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'amartinez@uned.ac.cr'],
+            [
+                'ide' => '110490039',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Ariel',
+                'lastname' => 'Martínez Silva',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
+        User::firstOrCreate(
+            ['email' => 'maria.vargas.mata@est.una.ac.cr'],
+            [
+                'ide' => '703000284',
+                'ide_type' => 1,
+                'admin' => 1,
+                'name' => 'Maria Fernanda',
+                'lastname' => 'Vargas Mata ',
+                'password' => Hash::make('VETC2025'),
+            ]
+        );
     }
 }
