@@ -98,19 +98,21 @@ class DashboardParticipantController extends Controller
         }
 
         if (!empty($registered)) {
+            // Registrar en BD
             $participant->sessions()->syncWithoutDetaching($registered);
 
-            $selectedSessions = Session::whereIn('id', $registered)->get()->load(['applicantForm', 'applicantForm.applicant.user', 'room']);
+            // Cargar la info completa solo de las sesiones registradas
+            $selectedSessions = Session::whereIn('id', $registered)
+                ->with(['applicantForm', 'applicantForm.applicant.user', 'room'])
+                ->get();
 
-            static $delay = 0;
-
+            // ENVIAR CORREO CON DELAY REAL DE 10 SEGUNDOS
             Mail::to($participant->user->email)
                 ->later(
-                    now()->addSeconds($delay),
+                    now()->addSeconds(10),
                     new ParticipantTopicsMail($participant, $selectedSessions)
                 );
 
-            $delay += 10;
             return back()->with('message', 'Registration completed successfully!');
         }
 
