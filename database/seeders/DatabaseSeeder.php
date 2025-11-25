@@ -104,17 +104,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
         User::firstOrCreate(
-            ['email' => 'lizanovillalobosjenhson@gmail.com'],
-            [
-                'ide' => '207860302',
-                'ide_type' => 1,
-                'admin' => 1,
-                'name' => 'Jenhson',
-                'lastname' => 'Lizano Villalobos',
-                'password' => Hash::make('Puravida2025.'),
-            ]
-        );
-        User::firstOrCreate(
             ['email' => 'jschaves@etai.ac.cr'],
             [
                 'ide' => '208220670',
@@ -203,7 +192,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
         User::firstOrCreate(
-            ['email' => 'camilanayu27@gmail.com'],
+            ['email' => 'Camilanayu27@gmail.com'],
             [
                 'ide' => '118890348',
                 'ide_type' => 1,
@@ -242,7 +231,7 @@ class DatabaseSeeder extends Seeder
                 'ide_type' => 1,
                 'admin' => 1,
                 'name' => 'Maria Fernanda',
-                'lastname' => 'Vargas Mata ',
+                'lastname' => 'Vargas Mata',
                 'password' => Hash::make('VETC2025'),
             ]
         );
