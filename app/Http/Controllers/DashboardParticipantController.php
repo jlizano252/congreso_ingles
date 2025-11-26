@@ -8,16 +8,15 @@ use App\Models\User;
 use App\Models\Session;
 use App\Mail\ParticipantTopicsMail;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class DashboardParticipantController extends Controller
 {
-    // Mostrar formulario de búsqueda de cédula
     public function index()
     {
         return view('dashboard-mod.index-participant');
     }
 
-    // Buscar participante y mostrar sesiones
     public function findParticipant(Request $request)
     {
         $request->validate(['ide' => 'required|string']);
@@ -25,118 +24,173 @@ class DashboardParticipantController extends Controller
         $user = User::where('ide', $request->ide)->firstOrFail();
         $participant = Participant::with('user')->where('user_id', $user->id)->firstOrFail();
 
-        // Guardar participante en sesión
         session(['participant_id' => $participant->id]);
 
-        // Redirigir a la página de sesiones
         return redirect()->route('participant.sessions');
     }
 
     public function showSessions()
     {
-        // Tomar participante de sesión
         $participantId = session('participant_id');
         if (!$participantId) {
             return redirect()->route('home_dashboard')->withErrors('Please enter your ID first.');
         }
 
-        $participant = Participant::with('user')->findOrFail($participantId);
+        $participant = Participant::with('user', 'sessions')->findOrFail($participantId);
 
-        $sessions = Session::with(['applicantForm', 'applicantForm.applicant.user', 'room', 'participants'])
+        $registeredSessions = $participant->sessions->pluck('id')->toArray();
+
+        $sessions = Session::with([
+            'applicantForm',
+            'applicantForm.applicant.user',
+            'room',
+            'participants'
+        ])
             ->whereHas('applicantForm')
             ->orderBy('date')
             ->orderBy('start_time')
             ->get();
 
-        $sessionsByDate = $sessions->map(function ($session) use ($participant) {
+        $sessionsByDate = $sessions->map(function ($session) use ($registeredSessions) {
 
-            $alreadyRegistered = $session->participants->contains($participant->id);
+            $alreadyRegistered = in_array($session->id, $registeredSessions);
             $available = $session->capacity - $session->participants->count();
 
-            // CALCULAR BLOQUE
             $block = $this->getBlock($session->date, $session->start_time);
+
+            $blockNumber = $block['number'] ?? null;
+            $blockTime   = $block['time'] ?? null;
+            $blockFull   = $block['block_full'] ?? null;
 
             return array_merge($session->toArray(), [
                 'already_registered' => $alreadyRegistered,
-                'available_spots' => $available,
-                'block' => $block['number'],
-                'block_time' => $block['time'],
+                'available_spots'    => $available,
+                'block'              => $blockNumber,
+                'block_time'         => $blockTime,
+                'block_full'         => $blockFull,
             ]);
         })->groupBy(function ($s) {
-            return \Carbon\Carbon::parse($s['date'])->format('l, F jS');
+            return Carbon::parse($s['date'])->format('l, F jS');
         });
 
         return view('dashboard-mod.participant-topics', compact('participant', 'sessionsByDate'));
     }
 
-    // Registrar sesiones seleccionadas
     public function register(Request $request)
     {
         $request->validate([
             'participant_id' => 'required|exists:participants,id',
-            'sessions' => 'required|array',
-            'sessions.*' => 'exists:sessions,id',
+            'sessions'       => 'required|array',
+            'sessions.*'     => 'exists:sessions,id',
         ]);
 
         $participant = Participant::findOrFail($request->participant_id);
-        $sessionIds = $request->input('sessions', []);
+        $selectedSessionIds = $request->input('sessions');
 
-        if (empty($sessionIds)) {
-            return back()->withErrors(['sessions' => 'You must select at least one session']);
-        }
+        $selectedSessions = Session::whereIn('id', $selectedSessionIds)
+            ->with('participants')
+            ->get();
 
-        $registered = [];
-        foreach ($sessionIds as $sessionId) {
-            $session = Session::with('participants')->find($sessionId);
-            if (!$session) continue;
+        /*
+         |-----------------------------------------------------
+         | Validación: Solo una sesión por bloque (con fecha)
+         |-----------------------------------------------------
+        */
 
-            if ($participant->sessions()->where('session_id', $sessionId)->exists()) continue;
+        $selectedBlocks = [];
+        $participantRegisteredBlocks = [];
 
-            if ($session->participants()->count() < $session->capacity) {
-                $registered[] = $sessionId;
+        // Bloques ya registrados por el participante (block_full)
+        foreach ($participant->sessions as $reg) {
+            $blockFull = $this->getBlock($reg->date, $reg->start_time)['block_full'];
+            if ($blockFull) {
+                $participantRegisteredBlocks[$blockFull] = true;
             }
         }
 
-        if (!empty($registered)) {
-            // Registrar en BD
-            $participant->sessions()->syncWithoutDetaching($registered);
+        // Bloques seleccionados ahora (block_full)
+        foreach ($selectedSessions as $session) {
 
-            // Cargar la info completa solo de las sesiones registradas
-            $selectedSessions = Session::whereIn('id', $registered)
-                ->with(['applicantForm', 'applicantForm.applicant.user', 'room'])
-                ->get();
+            $blockFull = $this->getBlock($session->date, $session->start_time)['block_full'];
 
-            // ENVIAR CORREO CON DELAY REAL DE 10 SEGUNDOS
-            Mail::to($participant->user->email)
-                ->later(
-                    now()->addSeconds(10),
-                    new ParticipantTopicsMail($participant, $selectedSessions)
-                );
+            if (!$blockFull) {
+                continue;
+            }
 
-            return back()->with('message', 'Registration completed successfully!');
+            // Ya tenía una sesión en este mismo bloque+fecha
+            if (isset($participantRegisteredBlocks[$blockFull])) {
+                return back()->withErrors([
+                    'sessions' => 'You can only choose ONE session per block.'
+                ]);
+            }
+
+            // Ha seleccionado más de una sesión en el mismo bloque+fecha
+            if (isset($selectedBlocks[$blockFull])) {
+                return back()->withErrors([
+                    'sessions' => 'You can only choose ONE session per block.'
+                ]);
+            }
+
+            $selectedBlocks[$blockFull] = true;
         }
 
-        return back()->withErrors(['sessions' => 'No spots available or already registered']);
+        /*
+         |-----------------------------------------
+         | Validación: Capacidad de cada sesión
+         |-----------------------------------------
+        */
+        foreach ($selectedSessions as $session) {
+            if ($session->participants->count() >= $session->capacity) {
+                return back()->withErrors([
+                    'sessions' => 'The session "' . $session->title . '" is already full.'
+                ]);
+            }
+        }
+
+        // Registrar sin eliminar sesiones anteriores
+        $participant->sessions()->syncWithoutDetaching($selectedSessionIds);
+
+        // Preparar datos para el correo
+        $sessionsFull = Session::whereIn('id', $selectedSessionIds)
+            ->with(['applicantForm', 'applicantForm.applicant.user', 'room'])
+            ->get();
+
+        Mail::to($participant->user->email)
+            ->later(now()->addSeconds(10), new ParticipantTopicsMail($participant, $sessionsFull));
+
+        return back()->with('message', 'Registration completed successfully!');
     }
 
     private function getBlock($date, $startTime)
     {
-        $dateFormatted = \Carbon\Carbon::parse($date)->format('Y-m-d');
-        $start = \Carbon\Carbon::parse($startTime);
+        $dateFormatted = Carbon::parse($date)->format('Y-m-d');
+        $start = Carbon::parse($startTime);
 
-        // BLOQUES DEL 27 DE NOVIEMBRE
+        $make = function ($number, $time) use ($dateFormatted) {
+            return [
+                'number'     => $number,
+                'time'       => $time,
+                'block_full' => $dateFormatted . '_' . $number,
+            ];
+        };
+
+        // Bloques del jueves
         if ($dateFormatted === '2025-11-27') {
-            if ($start->between('09:15', '10:40')) return ['number' => 1, 'time' => '09:15 – 10:40'];
-            if ($start->between('11:00', '12:30')) return ['number' => 2, 'time' => '11:00 – 12:30'];
-            if ($start->between('14:00', '15:30')) return ['number' => 3, 'time' => '14:00 – 15:30'];
+            if ($start->between('09:15', '10:40')) return $make(1, '09:15 – 10:40');
+            if ($start->between('11:00', '12:30')) return $make(2, '11:00 – 12:30');
+            if ($start->between('14:00', '15:30')) return $make(3, '14:00 – 15:30');
         }
 
-        // BLOQUES DEL 28 DE NOVIEMBRE
+        // Bloques del viernes
         if ($dateFormatted === '2025-11-28') {
-            if ($start->between('09:15', '10:40')) return ['number' => 1, 'time' => '09:15 – 10:40'];
-            if ($start->between('11:00', '12:30')) return ['number' => 2, 'time' => '11:00 – 12:30'];
+            if ($start->between('09:15', '10:40')) return $make(1, '09:15 – 10:40');
+            if ($start->between('11:00', '12:30')) return $make(2, '11:00 – 12:30');
         }
 
-        return ['number' => null, 'time' => null];
+        return [
+            'number'     => null,
+            'time'       => null,
+            'block_full' => null,
+        ];
     }
 }

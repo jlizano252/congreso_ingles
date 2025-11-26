@@ -108,26 +108,34 @@
             <div class="date-card-header">{{ $dateTitle }}</div>
             <div class="card-body">
 
-                {{-- Agrupar por bloque --}}
+                {{-- Agrupar por block_full (fecha + número) --}}
                 @php
-                $sessionsByBlock = collect($sessionsOfDay)->groupBy('block');
+                $sessionsByBlock = collect($sessionsOfDay)->groupBy('block_full');
                 @endphp
 
-                @foreach($sessionsByBlock as $blockNumber => $blockSessions)
+                @foreach($sessionsByBlock as $blockFullKey => $blockSessions)
+                @php
+                $hasRegisteredInBlock = $blockSessions->contains(fn($s) => $s['already_registered']);
+                @endphp
+
                 <div class="mb-4 p-3 border rounded bg-light shadow-sm">
                     <div class="block-title text-center">
-                        Block {{ $blockNumber }}:
-                        <span class="text-muted">
-                            {{ $blockSessions->first()['block_time'] }}
-                        </span>
+                        Block {{ $blockSessions->first()['block'] }}:
+                        <span class="text-muted">{{ $blockSessions->first()['block_time'] }}</span>
                     </div>
+
                     <div class="row g-4">
                         @foreach($blockSessions as $session)
                         @php
+                        // Compatibilidad con los dos nombres (applicant_form o applicantForm)
                         $applicantForm = $session['applicant_form'] ?? $session['applicantForm'] ?? null;
-                        @endphp
+                        $presenter = $applicantForm['applicant']['user'] ?? null;
 
-                        <div class="col-md-4">
+                        $disableDueToBlock = !$session['already_registered'] && $hasRegisteredInBlock;
+                        $disableDueToFull = !$session['already_registered'] && $session['available_spots'] <= 0;
+                            @endphp
+
+                            <div class="col-md-4">
                             <div class="card h-100 shadow-sm rounded border-0 card-hover-shadow">
                                 <div class="card-body session-card-body text-center position-relative">
 
@@ -137,9 +145,10 @@
                                             class="form-check-input session-checkbox"
                                             name="sessions[]"
                                             value="{{ $session['id'] }}"
-                                            data-block="{{ $session['block'] }}"
+                                            data-block="{{ $session['block_full'] }}"
                                             {{ $session['already_registered'] ? 'checked disabled' : '' }}
-                                            {{ !$session['already_registered'] && $session['available_spots'] <= 0 ? 'disabled' : '' }}>
+                                            {{ $disableDueToBlock ? 'disabled' : '' }}
+                                            {{ $disableDueToFull ? 'disabled' : '' }}>
                                     </div>
 
                                     {{-- Expositor Photo --}}
@@ -155,18 +164,19 @@
                                     </h5>
 
                                     <p class="text-muted small-info mb-2">
-                                        {{ $applicantForm['applicant']['user']['name'] ?? 'N/A' }}
-                                        {{ $applicantForm['applicant']['user']['lastname'] ?? '' }}
+                                        {{ $presenter['name'] ?? ($applicantForm['presenter_name'] ?? 'N/A') }}
+                                        {{ $presenter['lastname'] ?? ($applicantForm['presenter_lastname'] ?? '') }}
                                     </p>
 
                                     <p class="small-info text-primary mb-2">
-                                        <strong>Modality:</strong> {{ $applicantForm['participation_type'] ?? 'N/A' }}
+                                        <strong>Modality:</strong>
+                                        {{ $applicantForm['participation_type'] ?? ($session['participation_type'] ?? 'N/A') }}
                                     </p>
 
                                     <p class="mb-2 text-secondary small-info">
                                         <i class="fas fa-user-friends me-1"></i>
                                         Available Spots: {{ $session['available_spots'] }}
-                                        {{ $session['already_registered'] ? '(Already registered)' : '' }}
+                                        {{ $session['already_registered'] ? ' (Already registered)' : '' }}
                                     </p>
 
                                     <p class="mb-1 text-info small-info">
@@ -198,104 +208,104 @@
 
                                 </div>
                             </div>
-                        </div>
-
-                        {{-- Modal Expositor --}}
-                        <div class="modal fade" id="aboutExpositorModal{{ $session['id'] }}" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content rounded shadow-lg">
-                                    <div class="modal-header" style="background-color:#1976d2; color:#fff;">
-                                        <h5 class="modal-title">About Expositor</h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        @if($applicantForm && ($applicantForm['photo'] ?? false))
-                                        <img src="{{ asset('storage/' . $applicantForm['photo']) }}"
-                                            class="rounded-circle mb-3" style="width:100px;height:100px;">
-                                        @else
-                                        <i class="fas fa-user-circle fa-4x text-secondary mb-3"></i>
-                                        @endif
-
-                                        <h5 class="fw-bold congreso-orange">
-                                            {{ $applicantForm['applicant']['user']['name'] ?? '' }}
-                                            {{ $applicantForm['applicant']['user']['lastname'] ?? '' }}
-                                        </h5>
-
-                                        <p><strong>Academic Title:</strong> {{ $applicantForm['academic_title'] ?? 'N/A' }}</p>
-                                        <p><strong>Biography:</strong> {{ $applicantForm['exp'] ?? 'N/A' }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Modal Session --}}
-                        <div class="modal fade" id="aboutSessionModal{{ $session['id'] }}" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content rounded shadow-lg">
-                                    <div class="modal-header" style="background-color:#f57c00; color:#fff;">
-                                        <h5 class="modal-title">About Session</h5>
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body modal-body-custom">
-
-                                        <div class="mb-3 p-3 bg-light rounded shadow-sm">
-                                            <h6 class="fw-bold congreso-blue">Title</h6>
-                                            <p>{{ $applicantForm['title'] ?? 'N/A' }}</p>
-                                        </div>
-
-                                        <div class="mb-3 p-3 bg-light rounded shadow-sm">
-                                            <h6 class="fw-bold congreso-blue">Abstract</h6>
-                                            <p>{{ $applicantForm['abstract'] ?? 'N/A' }}</p>
-                                        </div>
-
-                                        <div class="mb-3 p-3 bg-light rounded shadow-sm">
-                                            <h6 class="fw-bold congreso-blue">Description</h6>
-                                            <p>{{ $applicantForm['description'] ?? 'N/A' }}</p>
-                                        </div>
-
-                                        <div class="mb-3 p-3 bg-light rounded shadow-sm">
-                                            <h6 class="fw-bold congreso-blue">Date & Time</h6>
-                                            <p>{{ \Carbon\Carbon::parse($session['date'])->format('d/m/Y') }}
-                                                {{ \Carbon\Carbon::parse($session['start_time'])->format('H:i') }}
-                                                -
-                                                {{ \Carbon\Carbon::parse($session['end_time'])->format('H:i') }}
-                                            </p>
-                                        </div>
-
-                                        <div class="mb-3 p-3 bg-light rounded shadow-sm">
-                                            <h6 class="fw-bold congreso-blue">Room</h6>
-                                            <p>{{ $session['room']['name'] ?? 'Unknown Room' }}</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        @endforeach
                     </div>
+
+                    {{-- Modal Expositor --}}
+                    <div class="modal fade" id="aboutExpositorModal{{ $session['id'] }}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content rounded shadow-lg">
+                                <div class="modal-header" style="background-color:#1976d2; color:#fff;">
+                                    <h5 class="modal-title">About Expositor</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    @if($applicantForm && ($applicantForm['photo'] ?? false))
+                                    <img src="{{ asset('storage/' . $applicantForm['photo']) }}"
+                                        class="rounded-circle mb-3" style="width:100px;height:100px;">
+                                    @else
+                                    <i class="fas fa-user-circle fa-4x text-secondary mb-3"></i>
+                                    @endif
+
+                                    <h5 class="fw-bold congreso-orange">
+                                        {{ $presenter['name'] ?? '' }}
+                                        {{ $presenter['lastname'] ?? '' }}
+                                    </h5>
+
+                                    <p><strong>Academic Title:</strong> {{ $applicantForm['academic_title'] ?? 'N/A' }}</p>
+                                    <p><strong>Biography:</strong> {{ $applicantForm['exp'] ?? 'N/A' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Session --}}
+                    <div class="modal fade" id="aboutSessionModal{{ $session['id'] }}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content rounded shadow-lg">
+                                <div class="modal-header" style="background-color:#f57c00; color:#fff;">
+                                    <h5 class="modal-title">About Session</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body modal-body-custom">
+
+                                    <div class="mb-3 p-3 bg-light rounded shadow-sm">
+                                        <h6 class="fw-bold congreso-blue">Title</h6>
+                                        <p>{{ $applicantForm['title'] ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <div class="mb-3 p-3 bg-light rounded shadow-sm">
+                                        <h6 class="fw-bold congreso-blue">Abstract</h6>
+                                        <p>{{ $applicantForm['abstract'] ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <div class="mb-3 p-3 bg-light rounded shadow-sm">
+                                        <h6 class="fw-bold congreso-blue">Description</h6>
+                                        <p>{{ $applicantForm['description'] ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <div class="mb-3 p-3 bg-light rounded shadow-sm">
+                                        <h6 class="fw-bold congreso-blue">Date & Time</h6>
+                                        <p>{{ \Carbon\Carbon::parse($session['date'])->format('d/m/Y') }}
+                                            {{ \Carbon\Carbon::parse($session['start_time'])->format('H:i') }}
+                                            -
+                                            {{ \Carbon\Carbon::parse($session['end_time'])->format('H:i') }}
+                                        </p>
+                                    </div>
+
+                                    <div class="mb-3 p-3 bg-light rounded shadow-sm">
+                                        <h6 class="fw-bold congreso-blue">Room</h6>
+                                        <p>{{ $session['room']['name'] ?? 'Unknown Room' }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
                 </div>
-                @endforeach
-
             </div>
+            @endforeach
+
         </div>
-        @endforeach
+</div>
+@endforeach
 
-        <div class="text-center">
-            <button type="submit" id="participarBtn" class="btn btn-orange mt-3 fw-bold" disabled>
-                Participate
-            </button>
-        </div>
+<div class="text-center">
+    <button type="submit" id="participarBtn" class="btn btn-orange mt-3 fw-bold" disabled>
+        Participate
+    </button>
+</div>
 
-    </form>
+</form>
 
-    @else
-    <p class="text-center">No sessions available yet.</p>
-    @endif
+@else
+<p class="text-center">No sessions available yet.</p>
+@endif
 
-    @else
-    <p class="text-center">Participant not found.</p>
-    @endif
+@else
+<p class="text-center">Participant not found.</p>
+@endif
 </div>
 
 <script>
@@ -310,7 +320,7 @@
                 if (this.checked) {
                     const block = this.dataset.block;
 
-                    // Deseleccionar otros del mismo bloque
+                    // Deseleccionar otros del mismo block_full
                     checkboxes.forEach(other => {
                         if (other !== this && other.dataset.block === block) {
                             other.checked = false;
