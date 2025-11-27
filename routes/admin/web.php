@@ -25,3 +25,6 @@ Route::get('/postularse', [PostulationController::class, 'index'])->name('public
 
 Route::get('/dashboard/attendance/report', [AttendanceReportController::class, 'download'])
     ->name('dashboard.attendance.report');
+
+Route::get('/dashboard/reports/troubleshooters', [AttendanceReportController::class, 'downloadTroubleshootersReport'])
+    ->name('dashboard.troubleshooters.report');

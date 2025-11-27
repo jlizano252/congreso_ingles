@@ -56,9 +56,6 @@
                     <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('home_dashboard') }}">Book Sessions</a>
                     </li>
-                    <!-- <li class="nav-item menu-item mt-4 mt-lg-0">
-                        <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Enroll</a>
-                    </li> -->
                     <li class="nav-item menu-item">
                         <a class="nav-link" href="{{ route('home') }}">Admin</a>
                     </li>
@@ -626,20 +623,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <section class="information">
-            <div class="container">
-                <h1 class="title text-center fw-bolder">Wanna enjoy the congress?</h1>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-7">
-                        <div class="d-flex justify-content-center">
-                            {{-- <a class="btn info_btn fw-normal px-5 mt-4 me-3" href="">Subscribe</a>--}}
-                             <a href="{{ route('public.register.index') }}" class="btn register_btn btn-warning fw-normal px-5" style="background-color: orange">Register</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
         <section class="footer bg-dark py-3 text-white">
             <div class="d-flex justify-content-center mb-3">

@@ -23,7 +23,7 @@ use App\Http\Controllers\ApplicantController;
 Route::get('/', [WebPageController::class, 'index'])->name('webpage.index');
 Route::get('/congress-details', [WebPageController::class, 'details'])->name('webpage.details');
 
-Route::get('/ui/register', [RegisterController::class, 'index'])->name('public.register.index');
+//Route::get('/ui/register', [RegisterController::class, 'index'])->name('public.register.index');
 Route::get('/ui/register/success', [RegisterController::class, 'emailViewTest'])->name('public.register.success');
 Route::get('/ui/register/error', [RegisterController::class, 'emailViewError'])->name('public.register.error');
 

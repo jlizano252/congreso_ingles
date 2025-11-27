@@ -59,7 +59,12 @@
             <!-- Download report button -->
             <div class="d-flex justify-content-end mt-3">
                 <a href="{{ route('dashboard.attendance.report') }}" class="btn btn-secondary fw-bold">
-                    Download Report
+                    Download Attendance Report
+                </a>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <a href="{{ route('dashboard.troubleshooters.report') }}" class="btn btn-warning fw-bold text-dark">
+                    Download Troubleshooters Report
                 </a>
             </div>
         </div>
